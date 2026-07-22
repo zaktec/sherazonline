@@ -1,38 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-    <!-- Sets the character format -->
-    <meta charset="UTF-8">
+    <!-- Use UTF-8 so punctuation and symbols display correctly. -->
+    <meta charset="utf-8">
 
-    <!-- Makes the website responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Make the layout match the width of phones, tablets and computers. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Asks search engines not to list or follow links on this page -->
-    <meta name="robots" content="noindex, nofollow">
+    <!-- A short summary for search engines and link previews. -->
+    <meta
+        name="description"
+        content="Course access and learner support from SherazOnline."
+    >
 
-    <!-- Browser title -->
-    <title>Access Mr Sheraz's Courses</title>
+    <!-- The text shown on the browser tab. -->
+    <title>SherazOnline | Learner Access</title>
 
-    <!-- Loads the external CSS file -->
+    <!-- Load the shared stylesheet used by every page. -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Loads the JavaScript file -->
-    <script src="js/main.js?v=5" defer></script>
-    <script src="js/private.js?v=5" defer></script>
+    <!-- Load navigation behaviour after the HTML has been parsed. -->
+    <script src="js/main.js" defer></script>
 </head>
 
 <body>
+    <!-- Keyboard users can skip repeated navigation and reach the content. -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- Website header -->
+    <!-- Shared site header. The brand is deliberately black. -->
     <header class="site-header">
-        <div class="container header-content">
-
-            <!-- Website name -->
-            <a class="logo" href="index.html">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="SherazOnline home">
                 SherazOnline
             </a>
 
-            <!-- Mobile menu button -->
+            <!-- JavaScript opens and closes this menu on smaller screens. -->
             <button
                 class="menu-button"
                 type="button"
@@ -42,137 +44,95 @@
                 Menu
             </button>
 
-            <!-- Public navigation -->
             <nav id="main-menu" class="main-menu" aria-label="Main navigation">
-                <a href="#courses">Learner Login</a>
-                <a href="#contact">Contact</a>
-
-                <!-- Opens the password-protected page -->
-                <a href="private.html">Private Area</a>
+                <a href="#courses">Courses</a>
+                <a href="#help">Help</a>
+                <a href="private.html">Professional Hub</a>
             </nav>
-
         </div>
     </header>
 
-    <!-- Main page content -->
-    <main>
-
-        <!-- Introduction section -->
+    <main id="main-content">
+        <!-- Main introduction and primary call to action. -->
         <section class="hero">
-            <div class="container">
-                <p class="small-heading">College learner access</p>
-
-                <h1>Access Mr Sheraz's Courses</h1>
-
-                <p class="hero-text">
-                    Select your course below to open your learning platform.
+            <div class="container narrow">
+                <p class="eyebrow">College learner access</p>
+                <h1>Access Mr Sheraz's courses</h1>
+                <p class="lead">
+                    Choose your course to open the learning platform, or use
+                    the help section if you cannot sign in.
                 </p>
+                <a class="button button-dark" href="#courses">Choose a course</a>
             </div>
         </section>
 
-        <!-- Learner login cards -->
+        <!-- Both courses currently use the same HAiBL sign-in service. -->
         <section id="courses" class="section">
             <div class="container">
-
                 <div class="section-heading">
-                    <h2>Learner Login</h2>
-
-                    <p>
-                        Choose the correct course area.
-                    </p>
+                    <p class="eyebrow">Learner login</p>
+                    <h2>Choose your course</h2>
+                    <p>Sign in to view lessons, resources and assignments.</p>
                 </div>
 
                 <div class="card-grid two-columns">
-
-                    <!-- BTEC Computing login card -->
                     <article class="card">
                         <p class="card-label">College course</p>
-
                         <h3>BTEC Computing</h3>
-
                         <p>
-                            Access assignments, lesson resources, guidance
-                            and course materials for BTEC Computing.
+                            Access BTEC Computing assignments, lesson resources,
+                            guidance and course materials.
                         </p>
-
-                        <!-- Replace this with the correct BTEC course link -->
                         <a
-                            class="button"
+                            class="button button-dark"
                             href="https://hai-bl.com/login"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            BTEC Login
+                            BTEC login
                         </a>
                     </article>
 
-                    <!-- T Level login card -->
                     <article class="card">
                         <p class="card-label">College course</p>
-
                         <h3>T Level Digital</h3>
-
                         <p>
-                            Access lessons, tasks, resources and course
-                            information for T Level Digital.
+                            Access T Level Digital lessons, tasks, resources and
+                            course information.
                         </p>
-
-                        <!-- Replace this with the correct T Level course link -->
                         <a
-                            class="button"
+                            class="button button-dark"
                             href="https://hai-bl.com/login"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            T Level Login
+                            T Level login
                         </a>
                     </article>
-
                 </div>
             </div>
         </section>
 
-        <!-- Login help section -->
-        <section class="section alternate-section">
-            <div class="container centre-text">
-                <h2>Having Trouble Logging In?</h2>
-
+        <!-- A simple support section without a placeholder email address. -->
+        <section id="help" class="section section-soft">
+            <div class="container narrow centre-text">
+                <p class="eyebrow">Login support</p>
+                <h2>Having trouble signing in?</h2>
                 <p>
-                    Check that you selected the correct course. Contact
-                    Mr Sheraz if you still cannot access your account.
+                    Check that you selected the correct course and entered your
+                    details carefully. Contact Mr Sheraz through your usual
+                    college communication channel if you still need help.
                 </p>
             </div>
         </section>
-
-        <!-- Contact section at the end -->
-        <section id="contact" class="section">
-            <div class="container centre-text">
-                <h2>Contact Mr Sheraz</h2>
-
-                <p>
-                    Contact me if you need help accessing your course.
-                </p>
-
-                <!-- Replace this email address with your college email -->
-                <a
-                    class="button"
-                    href="mailto:your-email@example.com"
-                >
-                    Contact Us
-                </a>
-            </div>
-        </section>
-
     </main>
 
-    <!-- Website footer -->
+    <!-- Shared footer with a year that JavaScript updates automatically. -->
     <footer class="site-footer">
-        <div class="container footer-content">
-            <p>&copy; 2026 SherazOnline</p>
-
-            <a href="private.html">Private Area</a>
+        <div class="container footer-inner">
+            <p>&copy; <span data-current-year>2026</span> SherazOnline</p>
+            <a href="private.html">Professional Hub</a>
         </div>
     </footer>
-
 </body>
 </html>

@@ -1,235 +1,111 @@
-body {
-    background: red !important;
-}
+/*
+   SherazOnline shared stylesheet
+   ----------------------------------------------------------
+   This one file styles both index.html and private.html.
+   The design is intentionally simple, responsive and easy to edit.
+*/
 
-h1 {
-    color: yellow !important;
-    font-size: 60px !important;
-}
-
-/* =========================================================
-   SherazOnline
-   Complete stylesheet for private professional hub
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   CSS variables
-   --------------------------------------------------------- */
-
+/* Reusable colours, sizes and spacing values. */
 :root {
-    --colour-primary: #1f5f8b;
-    --colour-primary-dark: #174866;
-    --colour-primary-soft: #eaf3f9;
-
-    --colour-secondary: #24364b;
-    --colour-secondary-dark: #172334;
-
-    --colour-background: #f7f9fb;
-    --colour-surface: #ffffff;
-    --colour-surface-soft: #eef3f7;
-
-    --colour-heading: #172334;
-    --colour-text: #465568;
-    --colour-text-muted: #687789;
-
-    --colour-border: #d8e0e8;
-    --colour-border-dark: #b4c0cc;
-
-    --colour-error: #b42318;
-    --colour-error-soft: #fef3f2;
-
-    --colour-focus: #f5a623;
-
-    --shadow-small: 0 0.3rem 1rem rgba(24, 39, 57, 0.08);
-    --shadow-medium: 0 1rem 2.5rem rgba(24, 39, 57, 0.12);
-    --shadow-large: 0 1.5rem 4rem rgba(0, 0, 0, 0.22);
-
-    --radius-small: 0.4rem;
-    --radius-medium: 0.75rem;
-    --radius-large: 1.1rem;
-
-    --container-width: 74rem;
-
-    --spacing-1: 0.25rem;
-    --spacing-2: 0.5rem;
-    --spacing-3: 0.75rem;
-    --spacing-4: 1rem;
-    --spacing-5: 1.25rem;
-    --spacing-6: 1.5rem;
-    --spacing-8: 2rem;
-    --spacing-10: 2.5rem;
-    --spacing-12: 3rem;
-    --spacing-16: 4rem;
-    --spacing-20: 5rem;
-
-    --font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    --transition-fast: 160ms ease;
-    --transition-medium: 240ms ease;
+    --black: #000000;
+    --near-black: #171717;
+    --text: #444444;
+    --muted: #6b6b6b;
+    --background: #ffffff;
+    --soft-background: #f4f4f4;
+    --border: #dddddd;
+    --focus: #ffbf47;
+    --radius: 0.6rem;
+    --container: 72rem;
+    --shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.07);
 }
 
-/* ---------------------------------------------------------
-   Reset and base styles
-   --------------------------------------------------------- */
-
+/* Make element widths include their padding and borders. */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+/* Enable smooth anchor scrolling using the correct CSS spelling. */
 html {
-    scroll-behaviour: smooth;
+    scroll-behavior: smooth;
 }
 
+/* Set the global page appearance. */
 body {
     min-height: 100vh;
     margin: 0;
-    background: var(--colour-background);
-    color: var(--colour-text);
-    font-family: var(--font-family);
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     line-height: 1.65;
-    text-rendering: optimizeLegibility;
 }
 
-body.private-access-granted {
-    background: var(--colour-background);
+/* Keep headings bold, dark and compact. */
+h1,
+h2,
+h3 {
+    margin-top: 0;
+    color: var(--near-black);
+    line-height: 1.15;
 }
 
-img,
-picture,
-svg,
-video {
-    display: block;
-    max-width: 100%;
+h1 {
+    margin-bottom: 1.25rem;
+    font-size: clamp(2.4rem, 7vw, 4.8rem);
+    letter-spacing: -0.05em;
 }
 
-button,
-input,
-textarea,
-select {
-    font: inherit;
+h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.03em;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-a {
-    color: var(--colour-primary);
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.18em;
-}
-
-a:hover {
-    color: var(--colour-primary-dark);
+h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.35rem;
 }
 
 p {
     margin-top: 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-    margin-top: 0;
-    color: var(--colour-heading);
-    line-height: 1.2;
-}
-
-h1 {
-    margin-bottom: var(--spacing-6);
-    font-size: clamp(2.2rem, 7vw, 4.4rem);
-    letter-spacing: -0.045em;
-}
-
-h2 {
-    margin-bottom: var(--spacing-5);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    letter-spacing: -0.035em;
-}
-
-h3 {
-    margin-bottom: var(--spacing-3);
-    font-size: 1.25rem;
-    letter-spacing: -0.015em;
-}
-
-ul,
-ol {
-    margin-top: 0;
-}
-
-button,
-a,
-input {
+/* Give keyboard users a visible focus indicator. */
+a:focus-visible,
+button:focus-visible {
+    outline: 0.2rem solid var(--focus);
     outline-offset: 0.2rem;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible {
-    outline: 0.2rem solid var(--colour-focus);
-}
-
-/* ---------------------------------------------------------
-   General utility classes
-   --------------------------------------------------------- */
-
+/* Limit content width and add safe space beside the viewport. */
 .container {
-    width: min(
-        calc(100% - 2rem),
-        var(--container-width)
-    );
+    width: min(calc(100% - 2rem), var(--container));
     margin-inline: auto;
 }
 
-.section {
-    padding-block: clamp(4rem, 8vw, 6.5rem);
+/* Use a narrower line length for text-heavy sections. */
+.narrow {
+    max-width: 48rem;
 }
 
-.section-soft {
-    background: var(--colour-surface-soft);
+/* Centre only the sections that deliberately use centred text. */
+.centre-text {
+    text-align: center;
 }
 
-.section-heading {
-    max-width: 44rem;
-    margin-bottom: var(--spacing-10);
-}
-
-.section-heading p:last-child {
-    margin-bottom: 0;
-}
-
-.eyebrow {
-    margin-bottom: var(--spacing-3);
-    color: var(--colour-primary);
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
+/* Hidden until focused, then visible at the top-left. */
 .skip-link {
     position: fixed;
-    z-index: 9999;
-    top: 1rem;
-    left: 1rem;
+    z-index: 2000;
+    top: 0.75rem;
+    left: 0.75rem;
     padding: 0.75rem 1rem;
-    transform: translateY(-180%);
-    border-radius: var(--radius-small);
-    background: var(--colour-heading);
+    transform: translateY(-150%);
+    background: var(--black);
     color: #ffffff;
-    font-weight: 700;
     text-decoration: none;
 }
 
@@ -237,697 +113,355 @@ input:focus-visible {
     transform: translateY(0);
 }
 
-/* ---------------------------------------------------------
-   Buttons
-   --------------------------------------------------------- */
-
-.button {
-    display: inline-flex;
-    min-height: 2.9rem;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-2);
-    padding: 0.75rem 1.15rem;
-    border: 0.08rem solid transparent;
-    border-radius: var(--radius-small);
-    cursor: pointer;
-    font-weight: 750;
-    line-height: 1.2;
-    text-align: center;
-    text-decoration: none;
-    transition:
-        background-color var(--transition-fast),
-        border-color var(--transition-fast),
-        color var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast);
-}
-
-.button:hover {
-    transform: translateY(-0.08rem);
-}
-
-.button:active {
-    transform: translateY(0);
-}
-
-.button-primary {
-    border-color: var(--colour-primary);
-    background: var(--colour-primary);
-    color: #ffffff;
-    box-shadow: 0 0.4rem 1rem rgba(31, 95, 139, 0.18);
-}
-
-.button-primary:hover {
-    border-color: var(--colour-primary-dark);
-    background: var(--colour-primary-dark);
-    color: #ffffff;
-}
-
-.button-secondary {
-    border-color: var(--colour-border-dark);
-    background: var(--colour-surface);
-    color: var(--colour-heading);
-}
-
-.button-secondary:hover {
-    border-color: var(--colour-primary);
-    background: var(--colour-primary-soft);
-    color: var(--colour-primary-dark);
-}
-
-.button-small {
-    min-height: 2.55rem;
-    padding: 0.6rem 0.95rem;
-    font-size: 0.9rem;
-}
-
-.button-full {
-    width: 100%;
-}
-
-.button-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-3);
-    margin-top: var(--spacing-6);
-}
-
-/* ---------------------------------------------------------
-   Password screen
-   --------------------------------------------------------- */
-
-.private-page {
-    min-height: 100vh;
-}
-
-.private-login {
-    min-height: 100vh;
-    display: grid;
-    place-items: center;
-    padding: var(--spacing-8) var(--spacing-4);
-    background:
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(93, 166, 207, 0.22),
-            transparent 32rem
-        ),
-        linear-gradient(
-            145deg,
-            var(--colour-secondary),
-            var(--colour-secondary-dark)
-        );
-}
-
-.private-login-card {
-    width: min(100%, 31rem);
-    padding: clamp(1.5rem, 5vw, 2.6rem);
-    border: 0.08rem solid rgba(255, 255, 255, 0.18);
-    border-radius: var(--radius-large);
-    background: var(--colour-surface);
-    box-shadow: var(--shadow-large);
-}
-
-.private-brand {
-    display: inline-block;
-    margin-bottom: var(--spacing-10);
-    color: var(--colour-heading);
-    font-size: 1.25rem;
-    font-weight: 850;
-    letter-spacing: -0.025em;
-    text-decoration: none;
-}
-
-.private-brand:hover {
-    color: var(--colour-primary);
-}
-
-.private-login-card h1 {
-    margin-bottom: var(--spacing-5);
-    font-size: clamp(2rem, 7vw, 3rem);
-}
-
-.private-login-card > p:not(.eyebrow, .private-notice) {
-    color: var(--colour-text);
-}
-
-.password-form {
-    margin-top: var(--spacing-8);
-}
-
-.form-group {
-    display: grid;
-    gap: var(--spacing-2);
-}
-
-.form-group label {
-    color: var(--colour-heading);
-    font-weight: 750;
-}
-
-.password-field {
-    display: flex;
-    align-items: stretch;
-}
-
-.password-field input {
-    min-width: 0;
-    flex: 1;
-    padding: 0.9rem 1rem;
-    border: 0.08rem solid var(--colour-border-dark);
-    border-radius:
-        var(--radius-small)
-        0
-        0
-        var(--radius-small);
-    background: #ffffff;
-    color: var(--colour-heading);
-}
-
-.password-field input:hover {
-    border-color: var(--colour-primary);
-}
-
-.password-field input:focus {
-    z-index: 1;
-    border-color: var(--colour-primary);
-    box-shadow: 0 0 0 0.23rem rgba(31, 95, 139, 0.14);
-    outline: none;
-}
-
-.password-toggle {
-    min-width: 4.4rem;
-    padding: 0.75rem 0.9rem;
-    border: 0.08rem solid var(--colour-border-dark);
-    border-left: 0;
-    border-radius:
-        0
-        var(--radius-small)
-        var(--radius-small)
-        0;
-    background: var(--colour-surface-soft);
-    color: var(--colour-heading);
-    cursor: pointer;
-    font-weight: 750;
-}
-
-.password-toggle:hover {
-    background: var(--colour-primary-soft);
-    color: var(--colour-primary-dark);
-}
-
-.form-error {
-    margin: var(--spacing-3) 0 0;
-    padding: 0.75rem 0.9rem;
-    border: 0.08rem solid #f4c7c3;
-    border-radius: var(--radius-small);
-    background: var(--colour-error-soft);
-    color: var(--colour-error);
-    font-size: 0.92rem;
-    font-weight: 700;
-}
-
-.password-form .button-full {
-    margin-top: var(--spacing-5);
-}
-
-.back-home-link {
-    display: inline-block;
-    margin-top: var(--spacing-6);
-    font-weight: 700;
-}
-
-.private-notice {
-    margin-top: var(--spacing-6);
-    margin-bottom: 0;
-    padding-top: var(--spacing-5);
-    border-top: 0.08rem solid var(--colour-border);
-    color: var(--colour-text-muted);
-    font-size: 0.84rem;
-    line-height: 1.55;
-}
-
-/* ---------------------------------------------------------
-   Header
-   --------------------------------------------------------- */
-
+/* Sticky white header with a subtle lower border. */
 .site-header {
     position: sticky;
     z-index: 1000;
     top: 0;
-    border-bottom: 0.08rem solid var(--colour-border);
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 0.2rem 0.8rem rgba(24, 39, 57, 0.05);
-    backdrop-filter: blur(0.75rem);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.97);
 }
 
 .header-inner {
-    min-height: 4.6rem;
+    min-height: 4.5rem;
     display: flex;
     align-items: center;
-    gap: var(--spacing-5);
+    gap: 1.25rem;
 }
 
-.site-logo {
-    flex-shrink: 0;
-    color: var(--colour-heading);
-    font-size: 1.2rem;
-    font-weight: 850;
-    letter-spacing: -0.03em;
+/* The requested black brand treatment. */
+.brand,
+.brand:visited,
+.brand:hover {
+    color: var(--black);
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: -0.04em;
     text-decoration: none;
 }
 
-.site-logo:hover {
-    color: var(--colour-primary);
-}
-
-.primary-navigation {
+/* Desktop navigation sits at the right side of the header. */
+.main-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
     margin-left: auto;
 }
 
-.primary-navigation ul {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.primary-navigation a {
-    display: block;
+.main-menu a {
     padding: 0.55rem 0.75rem;
-    border-radius: var(--radius-small);
-    color: var(--colour-text);
-    font-size: 0.94rem;
+    border-radius: 0.35rem;
+    color: var(--near-black);
     font-weight: 700;
     text-decoration: none;
 }
 
-.primary-navigation a:hover {
-    background: var(--colour-primary-soft);
-    color: var(--colour-primary-dark);
+.main-menu a:hover {
+    background: var(--soft-background);
 }
 
-.menu-toggle {
+/* The menu button is only shown on smaller screens. */
+.menu-button {
     display: none;
-    min-height: 2.7rem;
     margin-left: auto;
     padding: 0.55rem 0.85rem;
-    border: 0.08rem solid var(--colour-border-dark);
-    border-radius: var(--radius-small);
-    background: var(--colour-surface);
-    color: var(--colour-heading);
+    border: 1px solid var(--black);
+    border-radius: 0.35rem;
+    background: #ffffff;
+    color: var(--black);
     cursor: pointer;
-    font-weight: 750;
+    font: inherit;
+    font-weight: 700;
 }
 
-/* ---------------------------------------------------------
-   Hero
-   --------------------------------------------------------- */
+/* The lock button looks like a navigation item but remains a real button. */
+.nav-button {
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--black);
+    border-radius: 0.35rem;
+    background: var(--black);
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
 
-.page-hero {
+/* Full-screen password area shown before the protected content. */
+.login-screen {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: var(--soft-background);
+}
+
+/* Compact white password card with the requested black brand. */
+.login-card {
+    width: min(100%, 30rem);
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.login-card .brand {
+    display: inline-block;
+    margin-bottom: 2.5rem;
+}
+
+.login-card h1 {
+    font-size: clamp(2rem, 7vw, 3rem);
+}
+
+/* Password form elements are grouped for clear keyboard navigation. */
+.password-form {
+    margin-top: 1.5rem;
+}
+
+.password-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--near-black);
+    font-weight: 800;
+}
+
+.password-row {
+    display: flex;
+}
+
+.password-row input {
+    min-width: 0;
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #999999;
+    border-radius: 0.35rem 0 0 0.35rem;
+    font: inherit;
+}
+
+.password-row button {
+    padding-inline: 0.9rem;
+    border: 1px solid var(--black);
+    border-radius: 0 0.35rem 0.35rem 0;
+    background: #ffffff;
+    color: var(--black);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+
+.button-full {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.form-error {
+    margin: 0.75rem 0 0;
+    color: #b42318;
+    font-weight: 700;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1.25rem;
+    color: var(--black);
+    font-weight: 700;
+}
+
+.security-note {
+    margin: 1.5rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.noscript-message {
+    margin: 0;
+    padding: 1rem;
+    background: #fff4e5;
+    color: #713b00;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Ensure the HTML hidden attribute always wins over component layout. */
+[hidden] {
+    display: none !important;
+}
+
+/* Large introductory area shared by both pages. */
+.hero {
     padding-block: clamp(4.5rem, 10vw, 8rem);
-    background:
-        linear-gradient(
-            110deg,
-            rgba(234, 243, 249, 0.94),
-            rgba(247, 249, 251, 0.97)
-        );
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #ffffff, #eeeeee);
 }
 
-.page-hero-content {
-    max-width: 52rem;
-}
-
-.page-hero h1 {
-    max-width: 50rem;
-}
-
-.hero-text {
-    max-width: 44rem;
-    margin-bottom: 0;
-    color: var(--colour-text);
+.lead {
+    max-width: 43rem;
+    margin-bottom: 1.75rem;
     font-size: clamp(1.05rem, 2vw, 1.25rem);
 }
 
-.private-hero {
-    border-bottom: 0.08rem solid var(--colour-border);
-}
-
-/* ---------------------------------------------------------
-   Cards
-   --------------------------------------------------------- */
-
-.card-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-    gap: var(--spacing-6);
-}
-
-.project-card,
-.service-card {
-    min-width: 0;
-    border: 0.08rem solid var(--colour-border);
-    border-radius: var(--radius-medium);
-    background: var(--colour-surface);
-    box-shadow: var(--shadow-small);
-}
-
-.project-card {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: var(--spacing-6);
-    transition:
-        border-color var(--transition-medium),
-        box-shadow var(--transition-medium),
-        transform var(--transition-medium);
-}
-
-.project-card:hover {
-    transform: translateY(-0.25rem);
-    border-color: #b9cfdf;
-    box-shadow: var(--shadow-medium);
-}
-
-.project-card p {
-    margin-bottom: var(--spacing-4);
-}
-
-.project-card h3 {
-    font-size: 1.45rem;
-}
-
+.eyebrow,
 .card-label {
-    width: fit-content;
-    margin-bottom: var(--spacing-5);
-    padding: 0.32rem 0.62rem;
-    border-radius: 999rem;
-    background: var(--colour-primary-soft);
-    color: var(--colour-primary-dark);
-    font-size: 0.73rem;
-    font-weight: 850;
-    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
-.project-role {
-    margin-top: auto;
-    color: var(--colour-text-muted);
-    font-size: 0.93rem;
+/* Standard vertical spacing for content sections. */
+.section {
+    padding-block: clamp(4rem, 8vw, 6rem);
 }
 
-.project-role strong {
-    color: var(--colour-heading);
+.section-soft {
+    background: var(--soft-background);
 }
 
-.card-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-3);
-    margin-top: var(--spacing-3);
+.section-heading {
+    max-width: 42rem;
+    margin-bottom: 2rem;
 }
 
-.card-actions .button {
-    flex: 1 1 8.5rem;
-}
-
-/* ---------------------------------------------------------
-   Services
-   --------------------------------------------------------- */
-
-.service-grid {
+/* Responsive cards: three columns by default. */
+.card-grid {
     display: grid;
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-    gap: var(--spacing-6);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
 }
 
-.service-card {
-    padding: var(--spacing-6);
+/* A two-card row uses two equal columns. */
+.card-grid.two-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.service-card p:last-child {
-    margin-bottom: 0;
+.card {
+    min-width: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #ffffff;
+    box-shadow: var(--shadow);
 }
 
-/* ---------------------------------------------------------
-   About / profile
-   --------------------------------------------------------- */
-
-.about-layout {
-    display: grid;
-    grid-template-columns:
-        minmax(0, 0.8fr)
-        minmax(0, 1.2fr);
-    gap: clamp(2rem, 7vw, 6rem);
-    align-items: start;
+.card p:last-of-type {
+    margin-bottom: 1.25rem;
 }
 
-.about-content {
-    max-width: 40rem;
+/* Shared button style, using black for the main brand action. */
+.button {
+    display: inline-flex;
+    min-height: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.1rem;
+    border: 1px solid transparent;
+    border-radius: 0.35rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
 }
 
-.about-content p {
-    font-size: 1.05rem;
+.button-dark,
+.button-dark:visited {
+    border-color: var(--black);
+    background: var(--black);
+    color: #ffffff;
 }
 
-/* ---------------------------------------------------------
-   Footer
-   --------------------------------------------------------- */
+.button-dark:hover {
+    background: #333333;
+}
 
+/* Text links are strong enough to remain obvious without another button. */
+.text-link {
+    color: var(--black);
+    font-weight: 800;
+    text-underline-offset: 0.2rem;
+}
+
+/* Dark footer with a compact responsive layout. */
 .site-footer {
-    padding-block: var(--spacing-8);
-    border-top: 0.08rem solid var(--colour-border);
-    background: var(--colour-secondary-dark);
-    color: #dce5ee;
+    padding-block: 1.75rem;
+    background: var(--black);
+    color: #ffffff;
 }
 
 .footer-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--spacing-6);
+    gap: 1rem;
 }
 
 .footer-inner p {
     margin: 0;
-    font-size: 0.9rem;
-}
-
-.site-footer nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-4);
-    margin: 0;
-    padding: 0;
-    list-style: none;
 }
 
 .site-footer a {
     color: #ffffff;
-    font-size: 0.9rem;
     font-weight: 700;
-    text-decoration: none;
 }
 
-.site-footer a:hover {
-    text-decoration: underline;
-}
+/* Tablet layout uses two cards per row. */
+@media (max-width: 56rem) {
+    .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-/* ---------------------------------------------------------
-   No JavaScript message
-   --------------------------------------------------------- */
-
-.noscript-message {
-    position: fixed;
-    z-index: 10000;
-    inset: auto 0 0;
-    padding: var(--spacing-4);
-    border-top: 0.08rem solid #e5b66c;
-    background: #fff4e5;
-    color: #713b00;
-    text-align: center;
-    font-weight: 750;
-}
-
-/* ---------------------------------------------------------
-   Hidden elements
-   --------------------------------------------------------- */
-
-[hidden] {
-    display: none !important;
-}
-
-/* ---------------------------------------------------------
-   Tablet layout
-   --------------------------------------------------------- */
-
-@media (max-width: 58rem) {
-    .card-grid,
-    .service-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
+    .menu-button {
+        display: inline-block;
     }
 
     .header-inner {
         flex-wrap: wrap;
-        padding-block: var(--spacing-3);
+        padding-block: 0.75rem;
     }
 
-    .menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .primary-navigation {
+    .main-menu {
         width: 100%;
-        order: 4;
         display: none;
+        flex-direction: column;
+        align-items: stretch;
         margin-left: 0;
+        padding-bottom: 0.5rem;
     }
 
-    .primary-navigation.is-open {
-        display: block;
+    /* JavaScript adds this class when the menu is open. */
+    .main-menu.is-open {
+        display: flex;
     }
 
-    .primary-navigation ul {
-        display: grid;
-        gap: var(--spacing-1);
-        padding-block: var(--spacing-2);
+    .main-menu a {
+        background: var(--soft-background);
     }
 
-    .primary-navigation a {
-        padding: 0.75rem;
-        background: var(--colour-surface-soft);
-    }
-
-    #lock-page {
-        margin-left: 0;
-    }
-
-    .about-layout {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-6);
+    .nav-button {
+        width: 100%;
+        text-align: left;
     }
 }
 
-/* ---------------------------------------------------------
-   Mobile layout
-   --------------------------------------------------------- */
-
+/* Phone layout uses one card per row and a stacked footer. */
 @media (max-width: 40rem) {
-    .container {
-        width: min(
-            calc(100% - 1.25rem),
-            var(--container-width)
-        );
-    }
-
-    .section {
-        padding-block: 3.75rem;
-    }
-
-    .private-login {
-        padding: var(--spacing-4);
-    }
-
-    .private-login-card {
-        padding: 1.4rem;
-    }
-
-    .private-brand {
-        margin-bottom: var(--spacing-8);
-    }
-
-    .header-inner {
-        gap: var(--spacing-3);
-    }
-
-    .site-logo {
-        font-size: 1.08rem;
-    }
-
     .card-grid,
-    .service-grid {
+    .card-grid.two-columns {
         grid-template-columns: 1fr;
-    }
-
-    .project-card,
-    .service-card {
-        padding: var(--spacing-5);
-    }
-
-    .button-group,
-    .card-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
-    .button-group .button,
-    .card-actions .button {
-        width: 100%;
     }
 
     .footer-inner {
         align-items: flex-start;
         flex-direction: column;
     }
-
-    .site-footer nav ul {
-        flex-direction: column;
-        gap: var(--spacing-2);
-    }
 }
 
-/* ---------------------------------------------------------
-   Reduced motion accessibility
-   --------------------------------------------------------- */
-
+/* Respect users who ask their device to reduce movement. */
 @media (prefers-reduced-motion: reduce) {
     html {
-        scroll-behaviour: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        scroll-behaviour: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-    }
-}
-
-/* ---------------------------------------------------------
-   Print styles
-   --------------------------------------------------------- */
-
-@media print {
-    .site-header,
-    .site-footer,
-    .button,
-    .menu-toggle,
-    .private-login {
-        display: none !important;
-    }
-
-    #protected-content {
-        display: block !important;
-    }
-
-    body {
-        background: #ffffff;
-        color: #000000;
-    }
-
-    .project-card,
-    .service-card {
-        break-inside: avoid;
-        border: 0.08rem solid #999999;
-        box-shadow: none;
+        scroll-behavior: auto;
     }
 }

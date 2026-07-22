@@ -1,586 +1,235 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
+    <!-- Standard document and responsive-layout settings. -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="robots"
-        content="noindex, nofollow, noarchive"
-    >
-
+    <!-- Do not describe protected content in detail in public metadata. -->
     <meta
         name="description"
-        content="Private professional projects and platforms managed by Sheraz Cheema."
+        content="Password-protected professional hub for SherazOnline."
     >
 
-    <title>Private Professional Hub | SherazOnline</title>
+    <title>Professional Hub | SherazOnline</title>
 
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./js/private.js" defer></script>
+    <!-- Use the shared design, navigation script and access-check script. -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/private.js" defer></script>
 </head>
 
-<body class="private-page">
+<body class="protected-page">
+    <!--
+        Password screen shown before the professional content.
+        The script compares a SHA-256 hash and never stores plain text.
+    -->
+    <section id="login-screen" class="login-screen" aria-labelledby="login-title">
+        <div class="login-card">
+            <a class="brand" href="index.html">SherazOnline</a>
+            <p class="eyebrow">Restricted access</p>
+            <h1 id="login-title">Professional Hub</h1>
+            <p>Enter the access password to continue.</p>
 
-    <a class="skip-link" href="#main-content">
-        Skip to main content
-    </a>
-
-    <!-- Password screen -->
-    <section
-        id="login-screen"
-        class="private-login"
-        aria-labelledby="login-title"
-    >
-        <div class="private-login-card">
-
-            <a class="private-brand" href="./index.html">
-                SherazOnline
-            </a>
-
-            <p class="eyebrow">Restricted Access</p>
-
-            <h1 id="login-title">
-                Private Professional Hub
-            </h1>
-
-            <p>
-                Enter the access password to view Sheraz's professional
-                projects, platforms and developer links.
-            </p>
-
+            <!-- The form is processed locally by js/private.js. -->
             <form id="password-form" class="password-form">
+                <label for="access-password">Password</label>
 
-                <div class="form-group">
-                    <label for="access-password">
-                        Password
-                    </label>
-
-                    <div class="password-field">
-                        <input
-                            id="access-password"
-                            name="password"
-                            type="password"
-                            autocomplete="current-password"
-                            required
-                            aria-describedby="password-error"
-                        >
-
-                        <button
-                            id="toggle-password"
-                            class="password-toggle"
-                            type="button"
-                            aria-label="Show password"
-                        >
-                            Show
-                        </button>
-                    </div>
+                <div class="password-row">
+                    <input
+                        id="access-password"
+                        name="password"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                        aria-describedby="password-error"
+                    >
+                    <button id="toggle-password" type="button">Show</button>
                 </div>
 
-                <p
-                    id="password-error"
-                    class="form-error"
-                    role="alert"
-                    hidden
-                >
+                <!-- JavaScript reveals this message after an incorrect entry. -->
+                <p id="password-error" class="form-error" role="alert" hidden>
                     Incorrect password. Please try again.
                 </p>
 
-                <button
-                    class="button button-primary button-full"
-                    type="submit"
-                >
-                    Access Professional Hub
+                <button class="button button-dark button-full" type="submit">
+                    Open Professional Hub
                 </button>
-
             </form>
 
-            <a class="back-home-link" href="./index.html">
-                ← Return to public website
-            </a>
+            <a class="back-link" href="index.html">Return to learner access</a>
 
-            <p class="private-notice">
-                This page uses a basic browser-based access check and should
-                not contain confidential or sensitive information.
+            <!-- Explain the limits of a static browser-only password. -->
+            <p class="security-note">
+                Basic browser access check only. Do not store confidential,
+                personal or financial information on this static page.
             </p>
-
         </div>
     </section>
 
-    <!-- Protected page content -->
+    <!-- Everything in this wrapper stays hidden until access is granted. -->
     <div id="protected-content" hidden>
+        <!-- Accessibility shortcut for keyboard and screen-reader users. -->
+        <a class="skip-link" href="#main-content">Skip to main content</a>
 
-        <header class="site-header">
-            <div class="container header-inner">
+    <!-- Shared header displayed after the access check succeeds. -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="SherazOnline home">
+                SherazOnline
+            </a>
 
-                <a class="site-logo" href="./index.html">
-                    SherazOnline
-                </a>
+            <button
+                class="menu-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="main-menu"
+            >
+                Menu
+            </button>
 
-                <button
-                    class="menu-toggle"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="primary-navigation"
-                >
-                    Menu
+            <nav id="main-menu" class="main-menu" aria-label="Main navigation">
+                <a href="index.html">Learner Access</a>
+                <a href="#projects">Projects</a>
+                <a href="#services">Services</a>
+                <a href="#profile">Profile</a>
+                <button id="lock-page" class="nav-button" type="button">
+                    Lock page
                 </button>
-
-                <nav
-                    id="primary-navigation"
-                    class="primary-navigation"
-                    aria-label="Private professional navigation"
-                >
-                    <ul>
-                        <li>
-                            <a href="./index.html">Public Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#projects">Projects</a>
-                        </li>
-
-                        <li>
-                            <a href="#services">Services</a>
-                        </li>
-
-                        <li>
-                            <a href="#profile">Profile</a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <button
-                    id="lock-page"
-                    class="button button-small button-secondary"
-                    type="button"
-                >
-                    Lock Page
-                </button>
-
-            </div>
-        </header>
-
-        <main id="main-content">
-
-            <!-- Hero -->
-            <section class="page-hero private-hero">
-                <div class="container page-hero-content">
-
-                    <p class="eyebrow">
-                        Private Professional Hub
-                    </p>
-
-                    <h1>
-                        Projects, platforms and professional work
-                    </h1>
-
-                    <p class="hero-text">
-                        A central overview of the education, technology,
-                        business and community projects developed and managed
-                        by Sheraz Cheema.
-                    </p>
-
-                    <div class="button-group">
-                        <a class="button button-primary" href="#projects">
-                            View Projects
-                        </a>
-
-                        <a class="button button-secondary" href="#services">
-                            View Services
-                        </a>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Projects -->
-            <section id="projects" class="section">
-                <div class="container">
-
-                    <div class="section-heading">
-                        <p class="eyebrow">
-                            Projects & Platforms
-                        </p>
-
-                        <h2>
-                            Professional projects
-                        </h2>
-
-                        <p>
-                            Each project represents a different area of my
-                            teaching, technology, business or community work.
-                        </p>
-                    </div>
-
-                    <div class="card-grid">
-
-                        <!-- HAiBL -->
-                        <article class="project-card">
-                            <div class="card-label">
-                                Learning Platform
-                            </div>
-
-                            <h3>HAiBL</h3>
-
-                            <p>
-                                A learning platform for learner accounts,
-                                courses, quizzes, resources and progress
-                                tracking.
-                            </p>
-
-                            <p class="project-role">
-                                <strong>My role:</strong>
-                                Founder and developer
-                            </p>
-
-                            <div class="card-actions">
-                                <a
-                                    class="button button-primary"
-                                    href="https://hai-bl.com/login"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Student Login
-                                </a>
-
-                                <a
-                                    class="button button-secondary"
-                                    href="https://hai-bl.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Visit Website
-                                </a>
-                            </div>
-                        </article>
-
-                        <!-- MathsTutorHelp -->
-                        <article class="project-card">
-                            <div class="card-label">
-                                Tuition Service
-                            </div>
-
-                            <h3>MathsTutorHelp</h3>
-
-                            <p>
-                                Maths tuition, group classes, revision
-                                programmes and structured support for secondary
-                                school learners.
-                            </p>
-
-                            <p class="project-role">
-                                <strong>My role:</strong>
-                                Founder and lead tutor
-                            </p>
-
-                            <div class="card-actions">
-                                <a
-                                    class="button button-primary"
-                                    href="https://mathstutorhelp.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Visit Website
-                                </a>
-
-                                <a
-                                    class="button button-secondary"
-                                    href="https://hai-bl.com/login"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Learner Login
-                                </a>
-                            </div>
-                        </article>
-
-                        <!-- TableTopLearning -->
-                        <article class="project-card">
-                            <div class="card-label">
-                                Online Courses
-                            </div>
-
-                            <h3>TableTopLearning</h3>
-
-                            <p>
-                                Structured online courses with clear learning
-                                pathways, practical resources and tutor
-                                support.
-                            </p>
-
-                            <p class="project-role">
-                                <strong>My role:</strong>
-                                Founder and course developer
-                            </p>
-
-                            <div class="card-actions">
-                                <a
-                                    class="button button-primary"
-                                    href="https://tabletoplearning.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Visit Website
-                                </a>
-
-                                <a
-                                    class="button button-secondary"
-                                    href="https://hai-bl.com/login"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Learner Login
-                                </a>
-                            </div>
-                        </article>
-
-                        <!-- Zaktec Solutions -->
-                        <article class="project-card">
-                            <div class="card-label">
-                                Technology Services
-                            </div>
-
-                            <h3>Zaktec Solutions</h3>
-
-                            <p>
-                                Web development and practical technology
-                                solutions for educators, organisations and
-                                small businesses.
-                            </p>
-
-                            <p class="project-role">
-                                <strong>My role:</strong>
-                                Founder and web developer
-                            </p>
-
-                            <div class="card-actions">
-                                <a
-                                    class="button button-primary"
-                                    href="https://www.zaktecsolutions.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Visit Website
-                                </a>
-                            </div>
-                        </article>
-
-                        <!-- ConnectMuslim -->
-                        <article class="project-card">
-                            <div class="card-label">
-                                Community Platform
-                            </div>
-
-                            <h3>ConnectMuslim</h3>
-
-                            <p>
-                                A community-focused platform supporting local
-                                participation, learning and meaningful
-                                connections.
-                            </p>
-
-                            <p class="project-role">
-                                <strong>My role:</strong>
-                                Founder and product developer
-                            </p>
-
-                            <div class="card-actions">
-                                <a
-                                    class="button button-primary"
-                                    href="https://connectmuslim.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Visit Website
-                                </a>
-                            </div>
-                        </article>
-
-                        <!-- GitHub -->
-                        <article class="project-card">
-                            <div class="card-label">
-                                Development Profile
-                            </div>
-
-                            <h3>GitHub</h3>
-
-                            <p>
-                                Selected source code, static websites,
-                                experiments and ongoing development projects.
-                            </p>
-
-                            <p class="project-role">
-                                <strong>Focus:</strong>
-                                HTML, CSS, JavaScript and web applications
-                            </p>
-
-                            <div class="card-actions">
-                                <a
-                                    class="button button-secondary"
-                                    href="https://github.com/zaktec"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    View GitHub Profile
-                                </a>
-                            </div>
-                        </article>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Services -->
-            <section id="services" class="section section-soft">
-                <div class="container">
-
-                    <div class="section-heading">
-                        <p class="eyebrow">
-                            Professional Services
-                        </p>
-
-                        <h2>
-                            Areas of expertise
-                        </h2>
-
-                        <p>
-                            Services combining teaching experience, technical
-                            knowledge and practical project development.
-                        </p>
-                    </div>
-
-                    <div class="service-grid">
-
-                        <article class="service-card">
-                            <h3>Maths and Computing Education</h3>
-
-                            <p>
-                                Tuition, classroom teaching, course planning,
-                                coding instruction and learner support.
-                            </p>
-                        </article>
-
-                        <article class="service-card">
-                            <h3>Web Development</h3>
-
-                            <p>
-                                Fast, accessible and maintainable websites for
-                                education providers, businesses and community
-                                organisations.
-                            </p>
-                        </article>
-
-                        <article class="service-card">
-                            <h3>Education Technology Consultancy</h3>
-
-                            <p>
-                                Guidance on digital learning, learning
-                                platforms, online course delivery and
-                                educational resources.
-                            </p>
-                        </article>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Professional profile -->
-            <section id="profile" class="section">
-                <div class="container about-layout">
-
-                    <div>
-                        <p class="eyebrow">
-                            Professional Profile
-                        </p>
-
-                        <h2>
-                            Teaching, technology and business
-                        </h2>
-                    </div>
-
-                    <div class="about-content">
-                        <p>
-                            I am a mathematics and computer science educator,
-                            tutor, web developer and business owner with more
-                            than 15 years of experience in education.
-                        </p>
-
-                        <p>
-                            My work focuses on clear learning experiences,
-                            practical digital services and technology that is
-                            simple to manage and maintain.
-                        </p>
-
-                        <div class="button-group">
-                            <a
-                                class="button button-primary"
-                                href="https://www.linkedin.com/in/sherazcheema1/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                View LinkedIn Profile
-                            </a>
-
-                            <a
-                                class="button button-secondary"
-                                href="./index.html"
-                            >
-                                Visit Public Website
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-        </main>
-
-        <footer class="site-footer">
-            <div class="container footer-inner">
-
-                <p>
-                    &copy;
-                    <span id="current-year">2026</span>
-                    SherazOnline. Private Professional Hub.
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Professional introduction. -->
+        <section class="hero">
+            <div class="container narrow">
+                <p class="eyebrow">Professional hub</p>
+                <h1>Teaching, technology and practical digital services</h1>
+                <p class="lead">
+                    An overview of education, technology, business and community
+                    projects developed and managed by Sheraz Cheema.
                 </p>
-
-                <nav aria-label="Footer navigation">
-                    <ul>
-                        <li>
-                            <a href="./index.html">Public Home</a>
-                        </li>
-
-                        <li>
-                            <a href="#projects">Projects</a>
-                        </li>
-
-                        <li>
-                            <a
-                                href="https://www.linkedin.com/in/sherazcheema1/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                LinkedIn
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
+                <a class="button button-dark" href="#projects">View projects</a>
             </div>
-        </footer>
+        </section>
 
+        <!-- Public project links. Each opens in a separate tab safely. -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Projects</p>
+                    <h2>Platforms and services</h2>
+                    <p>Selected work across learning, tuition and technology.</p>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <p class="card-label">Learning platform</p>
+                        <h3>HAiBL</h3>
+                        <p>Courses, quizzes, resources and learner progress tracking.</p>
+                        <a class="text-link" href="https://hai-bl.com/" target="_blank" rel="noopener noreferrer">Visit HAiBL</a>
+                    </article>
+
+                    <article class="card">
+                        <p class="card-label">Tuition service</p>
+                        <h3>MathsTutorHelp</h3>
+                        <p>Maths tuition, revision programmes and structured support.</p>
+                        <a class="text-link" href="https://mathstutorhelp.com/" target="_blank" rel="noopener noreferrer">Visit MathsTutorHelp</a>
+                    </article>
+
+                    <article class="card">
+                        <p class="card-label">Online courses</p>
+                        <h3>TableTopLearning</h3>
+                        <p>Structured courses with practical resources and tutor support.</p>
+                        <a class="text-link" href="https://tabletoplearning.com/" target="_blank" rel="noopener noreferrer">Visit TableTopLearning</a>
+                    </article>
+
+                    <article class="card">
+                        <p class="card-label">Technology services</p>
+                        <h3>Zaktec Solutions</h3>
+                        <p>Web development for educators, organisations and businesses.</p>
+                        <a class="text-link" href="https://www.zaktecsolutions.com/" target="_blank" rel="noopener noreferrer">Visit Zaktec Solutions</a>
+                    </article>
+
+                    <article class="card">
+                        <p class="card-label">Community platform</p>
+                        <h3>ConnectMuslim</h3>
+                        <p>A platform for participation, learning and local connections.</p>
+                        <a class="text-link" href="https://connectmuslim.com/" target="_blank" rel="noopener noreferrer">Visit ConnectMuslim</a>
+                    </article>
+
+                    <article class="card">
+                        <p class="card-label">Development profile</p>
+                        <h3>GitHub</h3>
+                        <p>Source code, static websites and development projects.</p>
+                        <a class="text-link" href="https://github.com/zaktec" target="_blank" rel="noopener noreferrer">View GitHub</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Short service summary kept deliberately simple. -->
+        <section id="services" class="section section-soft">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Services</p>
+                    <h2>Areas of expertise</h2>
+                </div>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <h3>Maths and computing education</h3>
+                        <p>Teaching, tuition, course planning and learner support.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Web development</h3>
+                        <p>Fast, accessible and maintainable websites.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Education technology</h3>
+                        <p>Digital learning, online delivery and platform guidance.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional biography and external profile. -->
+        <section id="profile" class="section">
+            <div class="container narrow">
+                <p class="eyebrow">Profile</p>
+                <h2>About Sheraz</h2>
+                <p class="lead">
+                    I am a mathematics and computer science educator, tutor,
+                    web developer and business owner with more than 15 years of
+                    experience in education.
+                </p>
+                <a
+                    class="button button-dark"
+                    href="https://www.linkedin.com/in/sherazcheema1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View LinkedIn profile
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Shared footer. -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span data-current-year>2026</span> SherazOnline</p>
+            <a href="index.html">Learner Access</a>
+        </div>
+    </footer>
     </div>
 
+    <!-- Visitors need JavaScript because it performs the access check. -->
     <noscript>
-        <div class="noscript-message">
-            JavaScript must be enabled to access this page.
-        </div>
+        <p class="noscript-message">
+            JavaScript must be enabled to open the Professional Hub.
+        </p>
     </noscript>
-
 </body>
 </html>

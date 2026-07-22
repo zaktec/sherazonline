@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+
 <head>
-    <!-- Sets the character format -->
+    <!-- Sets the character format used by the page -->
     <meta charset="UTF-8">
 
-    <!-- Makes the page responsive -->
+    <!-- Makes the page responsive on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Prevents search engines from listing this page -->
+    <!-- Asks search engines not to show this private page -->
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Browser tab title -->
     <title>Private Area | SherazOnline</title>
 
     <!-- Connects this page to the shared CSS file -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
-    <!-- Loads the password JavaScript -->
-    <script src="js/main.js" defer></script>
+    <!-- Loads the password and mobile-menu JavaScript -->
+    <script src="./js/main.js" defer></script>
 </head>
 
 <body class="private-page">
 
-    <!-- Password screen shown before access is granted -->
+    <!-- ==================================================
+         PASSWORD SCREEN
+         This appears before the private content is opened.
+         ================================================== -->
+
     <main id="password-screen" class="password-screen">
 
         <div class="password-box">
 
+            <!-- Small heading above the main title -->
             <p class="small-heading">Protected page</p>
 
             <h1>Private Area</h1>
 
             <p>
-                Enter the password to view platforms, portfolio and services.
+                Enter the password to view my platforms,
+                portfolio and professional services.
             </p>
 
-            <!-- Password input -->
+            <!-- Label connected to the password field -->
             <label for="password">Password</label>
 
+            <!-- Password input -->
             <input
                 id="password"
                 type="password"
@@ -45,13 +53,21 @@
                 autocomplete="current-password"
             >
 
-            <!-- Password submit button -->
-            <button id="login-button" class="button full-button" type="button">
+            <!-- Runs the password check from main.js -->
+            <button
+                id="login-button"
+                class="button full-button"
+                type="button"
+            >
                 Open Private Area
             </button>
 
-            <!-- Error messages appear here -->
-            <p id="password-message" class="error-message" aria-live="polite"></p>
+            <!-- Password error messages appear here -->
+            <p
+                id="password-message"
+                class="error-message"
+                aria-live="polite"
+            ></p>
 
             <!-- Returns to the public learner page -->
             <a class="text-link" href="index.html">
@@ -62,13 +78,20 @@
 
     </main>
 
-    <!-- Private content hidden until password is correct -->
+
+    <!-- ==================================================
+         PRIVATE CONTENT
+         JavaScript reveals this after the correct password.
+         ================================================== -->
+
     <div id="private-content" class="private-content">
 
-        <!-- Private page header -->
+        <!-- Website header -->
         <header class="site-header">
+
             <div class="container header-content">
 
+                <!-- Website name -->
                 <a class="logo" href="private.html">
                     SherazOnline
                 </a>
@@ -83,18 +106,22 @@
                     Menu
                 </button>
 
-                <!-- Private page navigation -->
+                <!-- Private-page navigation -->
                 <nav
                     id="private-menu"
                     class="main-menu"
                     aria-label="Private navigation"
                 >
+                    <!-- Goes back to the public homepage -->
+                    <a href="index.html">Home</a>
+
+                    <!-- Moves to sections on this page -->
                     <a href="#platforms">Platforms</a>
                     <a href="#portfolio">Portfolio</a>
                     <a href="#services">Services</a>
                     <a href="#about">About</a>
 
-                    <!-- Locks the page again -->
+                    <!-- Locks the private page again -->
                     <button
                         id="logout-button"
                         class="nav-button"
@@ -105,68 +132,407 @@
                 </nav>
 
             </div>
+
         </header>
+
 
         <main>
 
-            <!-- Private page introduction -->
+            <!-- ==================================================
+                 PAGE INTRODUCTION
+                 ================================================== -->
+
             <section class="hero private-hero">
+
                 <div class="container">
-                    <p class="small-heading">Professional dashboard</p>
+
+                    <p class="small-heading">
+                        Professional dashboard
+                    </p>
 
                     <h1>Sheraz Private Area</h1>
 
                     <p class="hero-text">
-                        Access my platforms, projects, portfolio and
-                        professional services.
+                        Access my platforms, websites, portfolio
+                        and professional services.
                     </p>
+
                 </div>
+
             </section>
 
-            <!-- Platform login cards -->
+
+            <!-- ==================================================
+                 PLATFORM CARDS
+                 Every card has a login button and website button.
+                 ================================================== -->
+
             <section id="platforms" class="section">
+
                 <div class="container">
 
                     <div class="section-heading">
+
                         <h2>My Platforms</h2>
 
                         <p>
-                            Open the platform or website you need.
+                            Select Login to access an account or
+                            Website to open the public website.
                         </p>
+
                     </div>
+
 
                     <div class="card-grid">
 
-                        <!-- HAiBL card -->
+                        <!-- ==============================
+                             HAiBL PLATFORM
+                             ============================== -->
+
                         <article class="card">
-                            <p class="card-label">Learning platform</p>
+
+                            <p class="card-label">
+                                Learning platform
+                            </p>
 
                             <h3>HAiBL</h3>
 
                             <p>
-                                Manage courses, learners, quizzes, resources
-                                and progress.
+                                Courses, learner accounts, quizzes,
+                                resources and progress management.
                             </p>
 
-                            <a
-                                class="button"
-                                href="https://hai-bl.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Open HAiBL
-                            </a>
+                            <div class="card-actions">
+
+                                <!-- Opens the HAiBL login page -->
+                                <a
+                                    class="button"
+                                    href="https://hai-bl.com/login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Login
+                                </a>
+
+                                <!-- Opens the public HAiBL website -->
+                                <a
+                                    class="button button-secondary"
+                                    href="https://hai-bl.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Website
+                                </a>
+
+                            </div>
+
                         </article>
 
-                        <!-- MathsTutorHelp card -->
+
+                        <!-- ==============================
+                             MATHSTUTORHELP PLATFORM
+                             ============================== -->
+
                         <article class="card">
-                            <p class="card-label">Tutoring website</p>
+
+                            <p class="card-label">
+                                Maths tuition
+                            </p>
 
                             <h3>MathsTutorHelp</h3>
 
                             <p>
-                                View Maths tuition, classes, programmes and
-                                learner information.
+                                Maths tuition, group classes,
+                                revision programmes and learner support.
+                            </p>
+
+                            <div class="card-actions">
+
+                                <!-- Learners log in through HAiBL -->
+                                <a
+                                    class="button"
+                                    href="https://hai-bl.com/login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Login
+                                </a>
+
+                                <!-- Opens MathsTutorHelp -->
+                                <a
+                                    class="button button-secondary"
+                                    href="https://mathstutorhelp.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Website
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ==============================
+                             TABLETOPLEARNING PLATFORM
+                             ============================== -->
+
+                        <article class="card">
+
+                            <p class="card-label">
+                                Online courses
+                            </p>
+
+                            <h3>TableTopLearning</h3>
+
+                            <p>
+                                Structured online courses with
+                                practical tutor support.
+                            </p>
+
+                            <div class="card-actions">
+
+                                <!-- Change this when its final login URL is known -->
+                                <a
+                                    class="button"
+                                    href="https://hai-bl.com/login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Login
+                                </a>
+
+                                <!-- Change this if the final domain is different -->
+                                <a
+                                    class="button button-secondary"
+                                    href="https://tabletoplearning.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Website
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ==============================
+                             ZAKTEC SOLUTIONS PLATFORM
+                             ============================== -->
+
+                        <article class="card">
+
+                            <p class="card-label">
+                                Technology services
+                            </p>
+
+                            <h3>Zaktec Solutions</h3>
+
+                            <p>
+                                Web development, digital solutions
+                                and technology consultancy.
+                            </p>
+
+                            <div class="card-actions">
+
+                                <!-- Change this if the login address is different -->
+                                <a
+                                    class="button"
+                                    href="https://www.zaktecsolutions.com/login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Login
+                                </a>
+
+                                <!-- Opens the Zaktec Solutions website -->
+                                <a
+                                    class="button button-secondary"
+                                    href="https://www.zaktecsolutions.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Website
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ==============================
+                             CONNECTMUSLIM PLATFORM
+                             ============================== -->
+
+                        <article class="card">
+
+                            <p class="card-label">
+                                Community platform
+                            </p>
+
+                            <h3>ConnectMuslim</h3>
+
+                            <p>
+                                A community platform for groups,
+                                events, discussions and local connections.
+                            </p>
+
+                            <div class="card-actions">
+
+                                <!-- Change this if the login address is different -->
+                                <a
+                                    class="button"
+                                    href="https://connectmuslim.com/login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Login
+                                </a>
+
+                                <!-- Opens the public ConnectMuslim website -->
+                                <a
+                                    class="button button-secondary"
+                                    href="https://connectmuslim.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Website
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ==============================
+                             GITHUB PLATFORM
+                             ============================== -->
+
+                        <article class="card">
+
+                            <p class="card-label">
+                                Development
+                            </p>
+
+                            <h3>GitHub</h3>
+
+                            <p>
+                                Source code and repositories for
+                                websites and software projects.
+                            </p>
+
+                            <div class="card-actions">
+
+                                <!-- Opens the GitHub login page -->
+                                <a
+                                    class="button"
+                                    href="https://github.com/login"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Login
+                                </a>
+
+                                <!-- Opens your GitHub profile -->
+                                <a
+                                    class="button button-secondary"
+                                    href="https://github.com/zaktec"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Profile
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                        <!-- ==============================
+                             SHERAZONLINE PLATFORM
+                             ============================== -->
+
+                        <article class="card">
+
+                            <p class="card-label">
+                                Personal website
+                            </p>
+
+                            <h3>SherazOnline</h3>
+
+                            <p>
+                                My central website for learner access
+                                and professional information.
+                            </p>
+
+                            <div class="card-actions">
+
+                                <!-- Opens this protected page -->
+                                <a
+                                    class="button"
+                                    href="private.html"
+                                >
+                                    Private Area
+                                </a>
+
+                                <!-- Returns to the public homepage -->
+                                <a
+                                    class="button button-secondary"
+                                    href="index.html"
+                                >
+                                    Website
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 PORTFOLIO SECTION
+                 ================================================== -->
+
+            <section
+                id="portfolio"
+                class="section alternate-section"
+            >
+
+                <div class="container">
+
+                    <div class="section-heading">
+
+                        <h2>Portfolio</h2>
+
+                        <p>
+                            Selected education, technology and
+                            community projects.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card-grid">
+
+                        <!-- MathsTutorHelp portfolio project -->
+                        <article class="card">
+
+                            <p class="card-label">
+                                Education website
+                            </p>
+
+                            <h3>MathsTutorHelp</h3>
+
+                            <p>
+                                A responsive tuition website providing
+                                information about classes, services,
+                                enrolment and learner support.
                             </p>
 
                             <a
@@ -175,225 +541,279 @@
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Open MathsTutorHelp
+                                View Project
                             </a>
+
                         </article>
 
-                        <!-- TableTopLearning card -->
+
+                        <!-- HAiBL portfolio project -->
                         <article class="card">
-                            <p class="card-label">Online courses</p>
 
-                            <h3>TableTopLearning</h3>
-
-                            <p>
-                                Access structured online courses with tutor
-                                support.
+                            <p class="card-label">
+                                Learning technology
                             </p>
 
-                            <!-- Replace this with the final website link -->
-                            <a
-                                class="button"
-                                href="#"
-                            >
-                                Open TableTopLearning
-                            </a>
-                        </article>
-
-                        <!-- GitHub card -->
-                        <article class="card">
-                            <p class="card-label">Development</p>
-
-                            <h3>GitHub</h3>
-
-                            <p>
-                                View and manage my website and software
-                                repositories.
-                            </p>
-
-                            <a
-                                class="button"
-                                href="https://github.com/zaktec"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Open GitHub
-                            </a>
-                        </article>
-
-                        <!-- SherazOnline card -->
-                        <article class="card">
-                            <p class="card-label">Personal website</p>
-
-                            <h3>SherazOnline</h3>
-
-                            <p>
-                                Open the public learner login page.
-                            </p>
-
-                            <a class="button" href="index.html">
-                                Open Public Page
-                            </a>
-                        </article>
-
-                        <!-- Add another platform card here -->
-                        <article class="card">
-                            <p class="card-label">Additional platform</p>
-
-                            <h3>Another Platform</h3>
-
-                            <p>
-                                Replace this card with another website or
-                                professional platform.
-                            </p>
-
-                            <a class="button" href="#">
-                                Open Platform
-                            </a>
-                        </article>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- Portfolio section -->
-            <section id="portfolio" class="section alternate-section">
-                <div class="container">
-
-                    <div class="section-heading">
-                        <h2>Portfolio</h2>
-
-                        <p>
-                            Selected education and technology projects.
-                        </p>
-                    </div>
-
-                    <div class="card-grid">
-
-                        <!-- Portfolio project one -->
-                        <article class="card">
-                            <p class="card-label">Web development</p>
-
-                            <h3>MathsTutorHelp Website</h3>
-
-                            <p>
-                                A responsive tuition website providing
-                                information about classes, services and
-                                enrolment.
-                            </p>
-                        </article>
-
-                        <!-- Portfolio project two -->
-                        <article class="card">
-                            <p class="card-label">Learning technology</p>
-
-                            <h3>HAiBL Platform</h3>
+                            <h3>HAiBL</h3>
 
                             <p>
                                 A course and learner-management platform
-                                supporting quizzes, progress and resources.
+                                supporting resources, quizzes, progress
+                                and account management.
                             </p>
+
+                            <a
+                                class="button"
+                                href="https://hai-bl.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Project
+                            </a>
+
                         </article>
 
-                        <!-- Portfolio project three -->
+
+                        <!-- TableTopLearning portfolio project -->
                         <article class="card">
-                            <p class="card-label">Online education</p>
+
+                            <p class="card-label">
+                                Online education
+                            </p>
 
                             <h3>TableTopLearning</h3>
 
                             <p>
-                                An online course website designed around
+                                An online course website built around
                                 structured learning and tutor support.
                             </p>
+
+                            <a
+                                class="button"
+                                href="https://tabletoplearning.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Project
+                            </a>
+
+                        </article>
+
+
+                        <!-- Zaktec Solutions portfolio project -->
+                        <article class="card">
+
+                            <p class="card-label">
+                                Technology business
+                            </p>
+
+                            <h3>Zaktec Solutions</h3>
+
+                            <p>
+                                A professional technology website for
+                                development, digital systems and consultancy.
+                            </p>
+
+                            <a
+                                class="button"
+                                href="https://www.zaktecsolutions.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Project
+                            </a>
+
+                        </article>
+
+
+                        <!-- ConnectMuslim portfolio project -->
+                        <article class="card">
+
+                            <p class="card-label">
+                                Community technology
+                            </p>
+
+                            <h3>ConnectMuslim</h3>
+
+                            <p>
+                                A digital community platform designed
+                                to support meaningful local connections,
+                                groups and events.
+                            </p>
+
+                            <a
+                                class="button"
+                                href="https://connectmuslim.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Project
+                            </a>
+
                         </article>
 
                     </div>
+
                 </div>
+
             </section>
 
-            <!-- Services section -->
+
+            <!-- ==================================================
+                 PROFESSIONAL SERVICES
+                 ================================================== -->
+
             <section id="services" class="section">
+
                 <div class="container">
 
                     <div class="section-heading">
+
                         <h2>Professional Services</h2>
 
                         <p>
-                            The main areas in which I provide support.
+                            Education and technology support for
+                            learners, organisations and businesses.
                         </p>
+
                     </div>
+
 
                     <div class="card-grid">
 
-                        <!-- Teaching service -->
+                        <!-- Service one -->
                         <article class="card">
-                            <h3>Teaching and Tutoring</h3>
+
+                            <p class="card-label">
+                                Education
+                            </p>
+
+                            <h3>Maths and Computing Education</h3>
 
                             <p>
-                                Maths and computing teaching for school,
-                                college and private learners.
+                                Teaching, tutoring and course support
+                                for Maths, Computing and digital subjects.
                             </p>
+
                         </article>
 
-                        <!-- Development service -->
+
+                        <!-- Service two -->
                         <article class="card">
+
+                            <p class="card-label">
+                                Development
+                            </p>
+
                             <h3>Web Development</h3>
 
                             <p>
-                                Simple, responsive and maintainable websites
-                                using HTML, CSS and JavaScript.
+                                Simple, responsive and maintainable
+                                websites using HTML, CSS and JavaScript.
                             </p>
+
                         </article>
 
-                        <!-- Consultancy service -->
+
+                        <!-- Service three -->
                         <article class="card">
-                            <h3>Education Technology</h3>
+
+                            <p class="card-label">
+                                Consultancy
+                            </p>
+
+                            <h3>Education Technology Consultancy</h3>
 
                             <p>
-                                Support with learning platforms, digital
-                                courses and education systems.
+                                Practical support with learning platforms,
+                                online courses, digital systems and
+                                technology planning.
                             </p>
+
                         </article>
 
                     </div>
+
                 </div>
+
             </section>
 
-            <!-- About section at the bottom -->
-            <section id="about" class="section alternate-section">
+
+            <!-- ==================================================
+                 ABOUT SECTION
+                 Includes your LinkedIn profile.
+                 ================================================== -->
+
+            <section
+                id="about"
+                class="section alternate-section"
+            >
+
                 <div class="container narrow-container centre-text">
 
                     <p class="small-heading">About me</p>
 
-                    <h2>Sheraz</h2>
+                    <h2>Sheraz Cheema</h2>
 
                     <p>
-                        I am an experienced Maths and Computer Science teacher,
-                        tutor, web developer and education technology
+                        I am an experienced Maths and Computer Science
+                        educator, web developer and education technology
                         consultant based in Manchester.
                     </p>
 
                     <p>
-                        My work combines education, practical technology and
-                        online learning. I develop websites and learning
-                        platforms while supporting learners, parents, schools
-                        and organisations.
+                        My work combines education, practical technology
+                        and online learning. I develop websites and
+                        learning platforms while supporting learners,
+                        organisations and businesses.
                     </p>
 
+                    <!-- Opens your LinkedIn profile -->
+                    <a
+                        class="button"
+                        href="https://www.linkedin.com/in/sherazcheema1/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View LinkedIn Profile
+                    </a>
+
+                    <!-- Returns to the public homepage -->
+                    <a
+                        class="button button-secondary"
+                        href="index.html"
+                    >
+                        Return to Home
+                    </a>
+
                 </div>
+
             </section>
 
         </main>
 
-        <!-- Private page footer -->
+
+        <!-- ==================================================
+             FOOTER
+             ================================================== -->
+
         <footer class="site-footer">
+
             <div class="container footer-content">
+
                 <p>&copy; 2026 SherazOnline</p>
 
-                <a href="index.html">Public Learner Page</a>
+                <!-- Returns to the public learner page -->
+                <a href="index.html">
+                    Public Learner Page
+                </a>
+
             </div>
+
         </footer>
 
     </div>
 
 </body>
+
 </html>

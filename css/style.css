@@ -15,6 +15,21 @@
     --soft-background: #0d0d0d;
     --border: #303030;
     --focus: #ffbf47;
+
+    /* Typography tokens keep text consistent across both pages. */
+    --font-family: Arial, Helvetica, sans-serif;
+    --font-size-body: 1rem;
+    --line-height-body: 1.65;
+
+    /* Spacing tokens provide a small, predictable layout scale. */
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+
+    /* Border tokens keep components visually consistent. */
+    --border-width: 1px;
     --radius: 0.6rem;
     --container: 72rem;
     --shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.4);
@@ -38,9 +53,9 @@ body {
     margin: 0;
     background: var(--background);
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    line-height: 1.65;
+    font-family: var(--font-family);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
 }
 
 /* Keep headings bold, dark and compact. */
@@ -82,7 +97,7 @@ button:focus-visible {
 
 /* Limit content width and add safe space beside the viewport. */
 .container {
-    width: min(calc(100% - 2rem), var(--container));
+    width: min(calc(100% - var(--space-xl)), var(--container));
     margin-inline: auto;
 }
 
@@ -126,7 +141,7 @@ button:focus-visible {
     min-height: 4.5rem;
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: var(--space-lg);
 }
 
 /* White lettering keeps the brand readable on the black background. */
@@ -158,6 +173,12 @@ button:focus-visible {
 
 .main-menu a:hover {
     background: var(--soft-background);
+}
+
+/* Staff navigation stays quieter than the primary course-login buttons. */
+.main-menu .secondary-link {
+    color: var(--muted);
+    font-weight: 600;
 }
 
 /* The menu button is only shown on smaller screens. */
@@ -325,14 +346,14 @@ button:focus-visible {
 
 .section-heading {
     max-width: 42rem;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-xl);
 }
 
 /* Responsive cards: three columns by default. */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: var(--space-lg);
 }
 
 /* A two-card row uses two equal columns. */
@@ -342,11 +363,18 @@ button:focus-visible {
 
 .card {
     min-width: 0;
-    padding: 1.5rem;
-    border: 1px solid var(--border);
+    padding: var(--space-lg);
+    border: var(--border-width) solid var(--border);
     border-radius: var(--radius);
     background: #101010;
     box-shadow: var(--shadow);
+}
+
+/* Short service note sits below the course choices without becoming a CTA. */
+.platform-note {
+    margin: var(--space-lg) 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
 }
 
 .card p:last-of-type {

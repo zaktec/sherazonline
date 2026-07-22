@@ -17,7 +17,7 @@
     <title>SherazOnline | Learner Access</title>
 
     <!-- Load the shared stylesheet used by every page. -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=6">
 
     <!-- Load navigation behaviour after the HTML has been parsed. -->
     <script src="js/main.js" defer></script>
@@ -27,7 +27,7 @@
     <!-- Keyboard users can skip repeated navigation and reach the content. -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- Shared site header. The brand is deliberately black. -->
+    <!-- Shared site header with concise learner-focused navigation. -->
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="index.html" aria-label="SherazOnline home">
@@ -46,8 +46,13 @@
 
             <nav id="main-menu" class="main-menu" aria-label="Main navigation">
                 <a href="#courses">Courses</a>
-                <a href="#contact">Contact Us</a>
-                <a href="private.html">Professional Hub</a>
+                <a href="#contact">Contact</a>
+
+                <!--
+                    Staff Area uses a client-side access check only.
+                    It must not be treated as secure authentication.
+                -->
+                <a class="secondary-link" href="private.html">Staff Area</a>
             </nav>
         </div>
     </header>
@@ -57,12 +62,11 @@
         <section class="hero">
             <div class="container narrow">
                 <p class="eyebrow">College learner access</p>
-                <h1>Access Mr Sheraz's courses</h1>
+                <h1>Access Mr Sheraz’s courses</h1>
                 <p class="lead">
-                    Choose your course to open the learning platform, or use
-                    the help section if you cannot sign in.
+                    Choose your course to access lessons, assignments and
+                    resources through the HAiBL learning platform.
                 </p>
-                <a class="button button-dark" href="#courses">Choose a course</a>
             </div>
         </section>
 
@@ -70,19 +74,13 @@
         <section id="courses" class="section">
             <div class="container">
                 <div class="section-heading">
-                    <p class="eyebrow">Learner login</p>
                     <h2>Choose your course</h2>
-                    <p>Sign in to view lessons, resources and assignments.</p>
+                    <p>Select the correct course area to continue to HAiBL.</p>
                 </div>
 
                 <div class="card-grid two-columns">
                     <article class="card">
-                        <p class="card-label">College course</p>
                         <h3>BTEC Computing</h3>
-                        <p>
-                            Access BTEC Computing assignments, lesson resources,
-                            guidance and course materials.
-                        </p>
                         <a
                             class="button button-dark"
                             href="https://hai-bl.com/login"
@@ -94,12 +92,7 @@
                     </article>
 
                     <article class="card">
-                        <p class="card-label">College course</p>
                         <h3>T Level Digital</h3>
-                        <p>
-                            Access T Level Digital lessons, tasks, resources and
-                            course information.
-                        </p>
                         <a
                             class="button button-dark"
                             href="https://hai-bl.com/login"
@@ -110,17 +103,22 @@
                         </a>
                     </article>
                 </div>
+
+                <!-- HAiBL handles account and course access outside this site. -->
+                <p class="platform-note">
+                    Learner accounts and course access are securely managed
+                    through HAiBL.
+                </p>
             </div>
         </section>
 
         <!-- A simple contact section without publishing a placeholder email. -->
         <section id="contact" class="section section-soft">
             <div class="container narrow centre-text">
-                <p class="eyebrow">Contact and support</p>
-                <h2>Contact Us</h2>
+                <h2>Need help accessing your course?</h2>
                 <p>
-                    Contact Mr Sheraz through your usual college communication
-                    channel if you need help accessing your course.
+                    Use your usual college communication channel to contact
+                    Mr Sheraz if you cannot access your account.
                 </p>
             </div>
         </section>
@@ -130,7 +128,7 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <p>&copy; <span data-current-year>2026</span> SherazOnline</p>
-            <a href="#contact">Contact Us</a>
+            <a href="private.html">Staff Area</a>
         </div>
     </footer>
 </body>

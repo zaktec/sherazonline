@@ -1,204 +1,496 @@
-/*
- * SherazOnline JavaScript
- *
- * This file controls:
- * 1. Mobile navigation
- * 2. Private-page password checking
- * 3. Locking the private page
- */
-
-
-/* ==================================================
-   MOBILE NAVIGATION
-   ================================================== */
-
-/* Find every mobile menu button on the current page */
-const menuButtons = document.querySelectorAll(".menu-button");
-
-/* Add menu behaviour to each button */
-menuButtons.forEach((menuButton) => {
-    /* Find the ID of the menu controlled by this button */
-    const menuId = menuButton.getAttribute("aria-controls");
-
-    /* Find the matching menu */
-    const menu = document.getElementById(menuId);
-
-    /* Continue only when the menu exists */
-    if (menu) {
-        menuButton.addEventListener("click", () => {
-            /* Open or close the menu */
-            const menuIsOpen = menu.classList.toggle("is-open");
-
-            /* Update accessibility information */
-            menuButton.setAttribute(
-                "aria-expanded",
-                String(menuIsOpen)
-            );
-        });
-
-        /* Close the mobile menu after a link is selected */
-        menu.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                menu.classList.remove("is-open");
-                menuButton.setAttribute("aria-expanded", "false");
-            });
-        });
-    }
-});
-
-
-/* ==================================================
-   PRIVATE PAGE ELEMENTS
-   These elements exist only on private.html.
-   ================================================== */
-
-const passwordScreen = document.getElementById("password-screen");
-const privateContent = document.getElementById("private-content");
-const passwordInput = document.getElementById("password");
-const loginButton = document.getElementById("login-button");
-const logoutButton = document.getElementById("logout-button");
-const passwordMessage = document.getElementById("password-message");
-
+"use strict";
 
 /*
- * SHA-256 hash for the password:
- *
- * zaktec
- *
- * The visible password is not written into the comparison code.
- */
-const correctPasswordHash =
-    "0496ccfa64d648e0364ba57b8fd979a7b3627950fd088ea583948d9bd505a718";
+    SherazOnline private professional hub
+
+    IMPORTANT SECURITY NOTICE
+
+    This password check runs in the browser. It is only intended
+    to stop casual visitors from immediately viewing the page.
+
+    It is not secure authentication because visitors can inspect
+    the JavaScript and HTML source files.
+
+    Never store the following on this page:
+
+    - learner information
+    - customer records
+    - confidential documents
+    - financial information
+    - passwords
+    - API keys
+    - private admin links
+*/
 
 
-/* ==================================================
-   PASSWORD HASH FUNCTION
-   Converts entered text into a SHA-256 hash.
-   ================================================== */
+/* =========================================================
+   Configuration
+   ========================================================= */
 
-async function createPasswordHash(password) {
-    /* Convert the entered text into bytes */
-    const passwordBytes = new TextEncoder().encode(password);
+/*
+    Replace this with your chosen password.
 
-    /* Create the SHA-256 hash */
-    const hashBuffer = await crypto.subtle.digest(
-        "SHA-256",
-        passwordBytes
+    Avoid using a password that you also use for:
+    - email
+    - banking
+    - GitHub
+    - HAiBL
+    - any administrator account
+*/
+
+const PAGE_PASSWORD = "zaktec";
+
+/*
+    sessionStorage keeps access available in the current tab.
+    Access will normally be removed when the tab is closed.
+*/
+
+const SESSION_KEY = "sherazonlinePrivateAccess";
+
+
+/* =========================================================
+   Page elements
+   ========================================================= */
+
+const loginScreen =
+    document.querySelector("#login-screen");
+
+const protectedContent =
+    document.querySelector("#protected-content");
+
+const passwordForm =
+    document.querySelector("#password-form");
+
+const passwordInput =
+    document.querySelector("#access-password");
+
+const passwordError =
+    document.querySelector("#password-error");
+
+const togglePasswordButton =
+    document.querySelector("#toggle-password");
+
+const lockPageButton =
+    document.querySelector("#lock-page");
+
+const menuButton =
+    document.querySelector(".menu-toggle");
+
+const navigation =
+    document.querySelector(".primary-navigation");
+
+const navigationLinks =
+    document.querySelectorAll(
+        ".primary-navigation a"
     );
 
-    /* Convert the hash into readable hexadecimal characters */
-    return Array.from(new Uint8Array(hashBuffer))
-        .map((byte) => byte.toString(16).padStart(2, "0"))
-        .join("");
-}
+const yearElement =
+    document.querySelector("#current-year");
 
 
-/* ==================================================
-   OPEN PRIVATE PAGE
-   ================================================== */
+/* =========================================================
+   Helper functions
+   ========================================================= */
 
-function showPrivateContent() {
-    /* Hide the password screen */
-    passwordScreen.style.display = "none";
-
-    /* Show the private content */
-    privateContent.style.display = "block";
-
-    /* Remember access while this browser tab remains open */
-    sessionStorage.setItem("privateAccess", "allowed");
-
-    /* Remove the typed password */
-    passwordInput.value = "";
-
-    /* Remove any previous error */
-    passwordMessage.textContent = "";
-}
-
-
-/* ==================================================
-   CHECK PASSWORD
-   ================================================== */
-
-async function checkPassword() {
-    /* Read the password entered by the visitor */
-    const enteredPassword = passwordInput.value;
-
-    /* Stop when nothing was entered */
-    if (enteredPassword.trim() === "") {
-        passwordMessage.textContent = "Please enter the password.";
-        passwordInput.focus();
+/**
+ * Displays the protected professional page.
+ */
+function showProtectedPage() {
+    if (!loginScreen || !protectedContent) {
         return;
     }
 
-    /* Hash the entered password */
-    const enteredPasswordHash =
-        await createPasswordHash(enteredPassword);
+    sessionStorage.setItem(
+        SESSION_KEY,
+        "granted"
+    );
 
-    /* Compare the entered hash with the correct hash */
-    if (enteredPasswordHash === correctPasswordHash) {
-        showPrivateContent();
-    } else {
-        passwordMessage.textContent =
-            "Incorrect password. Please try again.";
+    loginScreen.hidden = true;
+    protectedContent.hidden = false;
 
+    document.body.classList.add(
+        "private-access-granted"
+    );
+
+    document.title =
+        "Private Professional Hub | SherazOnline";
+
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behaviour: "instant"
+    });
+
+    /*
+        Send keyboard focus to the main page heading
+        where possible.
+    */
+
+    const mainHeading =
+        protectedContent.querySelector("h1");
+
+    if (mainHeading) {
+        mainHeading.setAttribute(
+            "tabindex",
+            "-1"
+        );
+
+        mainHeading.focus({
+            preventScroll: true
+        });
+    }
+}
+
+
+/**
+ * Returns the visitor to the password screen.
+ */
+function showLoginScreen() {
+    if (!loginScreen || !protectedContent) {
+        return;
+    }
+
+    sessionStorage.removeItem(SESSION_KEY);
+
+    protectedContent.hidden = true;
+    loginScreen.hidden = false;
+
+    document.body.classList.remove(
+        "private-access-granted"
+    );
+
+    document.title =
+        "Private Professional Hub | SherazOnline";
+
+    closeMobileMenu();
+
+    if (passwordInput) {
         passwordInput.value = "";
+        passwordInput.type = "password";
+    }
+
+    if (togglePasswordButton) {
+        togglePasswordButton.textContent =
+            "Show";
+
+        togglePasswordButton.setAttribute(
+            "aria-label",
+            "Show password"
+        );
+    }
+
+    hidePasswordError();
+
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behaviour: "instant"
+    });
+
+    if (passwordInput) {
         passwordInput.focus();
     }
 }
 
 
-/* ==================================================
-   LOCK PRIVATE PAGE
-   ================================================== */
+/**
+ * Shows the incorrect-password message.
+ */
+function showPasswordError() {
+    if (!passwordError) {
+        return;
+    }
 
-function lockPrivatePage() {
-    /* Remove saved access */
-    sessionStorage.removeItem("privateAccess");
+    passwordError.hidden = false;
+}
 
-    /* Hide private content */
-    privateContent.style.display = "none";
 
-    /* Show password screen again */
-    passwordScreen.style.display = "flex";
+/**
+ * Hides the incorrect-password message.
+ */
+function hidePasswordError() {
+    if (!passwordError) {
+        return;
+    }
 
-    /* Clear messages and password */
-    passwordMessage.textContent = "";
-    passwordInput.value = "";
+    passwordError.hidden = true;
+}
 
-    /* Place the cursor in the password field */
+
+/**
+ * Closes the mobile navigation.
+ */
+function closeMobileMenu() {
+    if (!menuButton || !navigation) {
+        return;
+    }
+
+    navigation.classList.remove("is-open");
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuButton.textContent = "Menu";
+}
+
+
+/**
+ * Opens or closes the mobile navigation.
+ */
+function toggleMobileMenu() {
+    if (!menuButton || !navigation) {
+        return;
+    }
+
+    const menuIsOpen =
+        menuButton.getAttribute(
+            "aria-expanded"
+        ) === "true";
+
+    const newState = !menuIsOpen;
+
+    navigation.classList.toggle(
+        "is-open",
+        newState
+    );
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        String(newState)
+    );
+
+    menuButton.textContent =
+        newState ? "Close" : "Menu";
+}
+
+
+/**
+ * Shows or hides the entered password.
+ */
+function togglePasswordVisibility() {
+    if (
+        !passwordInput ||
+        !togglePasswordButton
+    ) {
+        return;
+    }
+
+    const passwordIsHidden =
+        passwordInput.type === "password";
+
+    passwordInput.type =
+        passwordIsHidden
+            ? "text"
+            : "password";
+
+    togglePasswordButton.textContent =
+        passwordIsHidden
+            ? "Hide"
+            : "Show";
+
+    togglePasswordButton.setAttribute(
+        "aria-label",
+        passwordIsHidden
+            ? "Hide password"
+            : "Show password"
+    );
+
     passwordInput.focus();
 }
 
 
-/* ==================================================
-   PRIVATE PAGE EVENT LISTENERS
-   Only run when the relevant elements exist.
-   ================================================== */
-
-if (
-    passwordScreen &&
-    privateContent &&
-    passwordInput &&
-    loginButton &&
-    passwordMessage
-) {
-    /* Keep the page unlocked during the same browser tab */
-    if (sessionStorage.getItem("privateAccess") === "allowed") {
-        showPrivateContent();
+/**
+ * Updates the footer year automatically.
+ */
+function updateCurrentYear() {
+    if (!yearElement) {
+        return;
     }
 
-    /* Check password when the login button is clicked */
-    loginButton.addEventListener("click", checkPassword);
+    yearElement.textContent =
+        String(new Date().getFullYear());
+}
 
-    /* Check password when Enter is pressed */
-    passwordInput.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") {
-            checkPassword();
+
+/* =========================================================
+   Password form
+   ========================================================= */
+
+if (passwordForm && passwordInput) {
+    passwordForm.addEventListener(
+        "submit",
+        function handlePasswordSubmit(event) {
+            event.preventDefault();
+
+            const enteredPassword =
+                passwordInput.value.trim();
+
+            if (
+                enteredPassword ===
+                PAGE_PASSWORD
+            ) {
+                hidePasswordError();
+                showProtectedPage();
+                return;
+            }
+
+            showPasswordError();
+
+            passwordInput.value = "";
+            passwordInput.focus();
         }
-    });
+    );
 }
 
-/* Lock the page when the Lock Page button is clicked */
-if (logoutButton) {
-    logoutButton.addEventListener("click", lockPrivatePage);
+
+/*
+    Remove the error as soon as the visitor starts
+    entering another password.
+*/
+
+if (passwordInput) {
+    passwordInput.addEventListener(
+        "input",
+        hidePasswordError
+    );
 }
+
+
+/* =========================================================
+   Show and hide password button
+   ========================================================= */
+
+if (togglePasswordButton) {
+    togglePasswordButton.addEventListener(
+        "click",
+        togglePasswordVisibility
+    );
+}
+
+
+/* =========================================================
+   Lock-page button
+   ========================================================= */
+
+if (lockPageButton) {
+    lockPageButton.addEventListener(
+        "click",
+        showLoginScreen
+    );
+}
+
+
+/* =========================================================
+   Mobile navigation
+   ========================================================= */
+
+if (menuButton && navigation) {
+    menuButton.addEventListener(
+        "click",
+        toggleMobileMenu
+    );
+}
+
+
+/*
+    Close the mobile menu after a navigation link
+    has been selected.
+*/
+
+navigationLinks.forEach(
+    function addNavigationListener(link) {
+        link.addEventListener(
+            "click",
+            closeMobileMenu
+        );
+    }
+);
+
+
+/*
+    Close the mobile menu when Escape is pressed.
+*/
+
+document.addEventListener(
+    "keydown",
+    function handleKeyboardActions(event) {
+        if (event.key === "Escape") {
+            if (
+                navigation &&
+                navigation.classList.contains(
+                    "is-open"
+                )
+            ) {
+                closeMobileMenu();
+
+                if (menuButton) {
+                    menuButton.focus();
+                }
+
+                return;
+            }
+
+            /*
+                Escape also hides a visible password.
+            */
+
+            if (
+                passwordInput &&
+                passwordInput.type === "text"
+            ) {
+                passwordInput.type =
+                    "password";
+
+                if (togglePasswordButton) {
+                    togglePasswordButton.textContent =
+                        "Show";
+
+                    togglePasswordButton.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+                }
+            }
+        }
+    }
+);
+
+
+/*
+    Close the menu automatically if the browser is
+    resized from mobile to desktop size.
+*/
+
+window.addEventListener(
+    "resize",
+    function handleWindowResize() {
+        if (window.innerWidth > 928) {
+            closeMobileMenu();
+        }
+    }
+);
+
+
+/* =========================================================
+   Initial page state
+   ========================================================= */
+
+function initialisePrivatePage() {
+    updateCurrentYear();
+
+    const accessWasGranted =
+        sessionStorage.getItem(
+            SESSION_KEY
+        ) === "granted";
+
+    if (accessWasGranted) {
+        showProtectedPage();
+        return;
+    }
+
+    showLoginScreen();
+}
+
+initialisePrivatePage();

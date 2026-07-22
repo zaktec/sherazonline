@@ -1,135 +1,264 @@
-<style>
-    /* Main page */
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        color: #ffffff;
-        background-color: #000000;
-        line-height: 1.6;
-    }
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
 
-    /* Centres the content */
-    .container {
-        width: 90%;
-        max-width: 1000px;
-        margin: auto;
-    }
+    <!-- Makes the website work properly on mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Header */
-    header {
-        background-color: #000000;
-        padding: 20px 0;
-        border-bottom: 1px solid #333333;
-    }
+    <title>SherazOnline</title>
 
-    /* Navigation */
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-    }
-
-    nav a {
-        margin-left: 15px;
-        color: #ffffff;
-        text-decoration: none;
-    }
-
-    nav a:hover {
-        color: #cccccc;
-    }
-
-    /* Main buttons */
-    .button {
-        display: inline-block;
-        padding: 12px 20px;
-        background-color: #ffffff;
-        color: #000000;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-    }
-
-    .button:hover {
-        background-color: #dddddd;
-    }
-
-    /* Hero section */
-    .hero {
-        padding: 80px 0;
-        text-align: center;
-        background-color: #000000;
-    }
-
-    .hero h1 {
-        margin-bottom: 15px;
-        font-size: 42px;
-    }
-
-    /* General sections */
-    section {
-        padding: 50px 0;
-    }
-
-    /* Alternate section background */
-    #services,
-    #login {
-        background-color: #111111;
-    }
-
-    h2 {
-        margin-top: 0;
-    }
-
-    /* Cards */
-    .services {
-        display: grid;
-        gap: 20px;
-    }
-
-    .card {
-        padding: 25px;
-        background-color: #111111;
-        border: 1px solid #333333;
-        border-radius: 8px;
-    }
-
-    /* Student login section */
-    .student-login {
-        text-align: center;
-    }
-
-    /* Footer */
-    footer {
-        padding: 25px 0;
-        text-align: center;
-        background-color: #000000;
-        color: #ffffff;
-        border-top: 1px solid #333333;
-    }
-
-    /* Desktop cards */
-    @media (min-width: 700px) {
-        .services {
-            grid-template-columns: repeat(3, 1fr);
+    <style>
+        /* Whole website */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.6;
         }
-    }
 
-    /* Mobile layout */
-    @media (max-width: 699px) {
+        /* Keeps content centred */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #333333;
+        }
+
+        /* Navigation */
         nav {
-            flex-direction: column;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        /* Buttons */
+        .button {
             display: inline-block;
-            margin: 5px;
+            padding: 12px 20px;
+            background-color: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Main introduction */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
         }
 
         .hero h1 {
-            font-size: 32px;
+            font-size: 42px;
+            margin-bottom: 10px;
         }
-    }
-</style>
+
+        /* Page sections */
+        section {
+            padding: 60px 0;
+        }
+
+        /* Dark grey sections */
+        .grey-section {
+            background-color: #111111;
+        }
+
+        /* Service cards */
+        .services {
+            display: grid;
+            gap: 20px;
+        }
+
+        .card {
+            padding: 25px;
+            background-color: #171717;
+            border: 1px solid #333333;
+            border-radius: 8px;
+        }
+
+        /* Student login section */
+        .student-login {
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            padding: 25px;
+            text-align: center;
+            border-top: 1px solid #333333;
+        }
+
+        /* Desktop card layout */
+        @media (min-width: 700px) {
+            .services {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile navigation */
+        @media (max-width: 699px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <strong>SherazOnline</strong>
+
+                <div>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+
+                    <!-- External learner login -->
+                    <a class="button" href="https://hai-bl.com/login">
+                        Student Login
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Introduction -->
+        <section class="hero">
+            <div class="container">
+                <h1>Teacher, Developer and Consultant</h1>
+
+                <p>
+                    Teaching, tutoring, web development and education technology.
+                </p>
+
+                <a class="button" href="#contact">Contact Me</a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="grey-section">
+            <div class="container">
+                <h2>About Me</h2>
+
+                <p>
+                    I am Sheraz, a teacher, tutor, web developer and education
+                    technology consultant based in Manchester.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services">
+            <div class="container">
+                <h2>My Services</h2>
+
+                <div class="services">
+                    <div class="card">
+                        <h3>Teaching</h3>
+                        <p>Maths and computing teaching and tutoring.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Web Development</h3>
+                        <p>Simple, fast and professional websites.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Education Technology</h3>
+                        <p>Learning platforms and digital education support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="grey-section">
+            <div class="container">
+                <h2>My Projects</h2>
+
+                <div class="services">
+                    <div class="card">
+                        <h3>MathsTutorHelp</h3>
+                        <p>Maths tuition and revision support.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>HAiBL</h3>
+                        <p>Online learning and student management platform.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>TableTopLearning</h3>
+                        <p>Structured online courses with tutor support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student login -->
+        <section class="student-login">
+            <div class="container">
+                <h2>Student Login</h2>
+
+                <p>Access your courses, quizzes and learning resources.</p>
+
+                <a class="button" href="https://hai-bl.com/login">
+                    Login to HAiBL
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="grey-section">
+            <div class="container">
+                <h2>Contact Me</h2>
+
+                <p>
+                    Contact me about tuition, websites or education technology.
+                </p>
+
+                <a class="button" href="mailto:hello@sherazonline.com">
+                    Email Me
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 SherazOnline.com</p>
+    </footer>
+
+</body>
+</html>

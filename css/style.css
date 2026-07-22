@@ -2,22 +2,22 @@
    SherazOnline shared stylesheet
    ----------------------------------------------------------
    This one file styles both index.html and private.html.
-   The design is intentionally simple, responsive and easy to edit.
+   The design is intentionally simple, fully black and easy to edit.
 */
 
 /* Reusable colours, sizes and spacing values. */
 :root {
     --black: #000000;
-    --near-black: #171717;
-    --text: #444444;
-    --muted: #6b6b6b;
-    --background: #ffffff;
-    --soft-background: #f4f4f4;
-    --border: #dddddd;
+    --near-black: #ffffff;
+    --text: #e6e6e6;
+    --muted: #b8b8b8;
+    --background: #000000;
+    --soft-background: #0d0d0d;
+    --border: #303030;
     --focus: #ffbf47;
     --radius: 0.6rem;
     --container: 72rem;
-    --shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.07);
+    --shadow: 0 0.7rem 2rem rgba(0, 0, 0, 0.4);
 }
 
 /* Make element widths include their padding and borders. */
@@ -113,13 +113,13 @@ button:focus-visible {
     transform: translateY(0);
 }
 
-/* Sticky white header with a subtle lower border. */
+/* Sticky black header with a subtle lower border. */
 .site-header {
     position: sticky;
     z-index: 1000;
     top: 0;
     border-bottom: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(0, 0, 0, 0.97);
 }
 
 .header-inner {
@@ -129,11 +129,11 @@ button:focus-visible {
     gap: 1.25rem;
 }
 
-/* The requested black brand treatment. */
+/* White lettering keeps the brand readable on the black background. */
 .brand,
 .brand:visited,
 .brand:hover {
-    color: var(--black);
+    color: #ffffff;
     font-size: 1.25rem;
     font-weight: 900;
     letter-spacing: -0.04em;
@@ -165,10 +165,10 @@ button:focus-visible {
     display: none;
     margin-left: auto;
     padding: 0.55rem 0.85rem;
-    border: 1px solid var(--black);
+    border: 1px solid #ffffff;
     border-radius: 0.35rem;
-    background: #ffffff;
-    color: var(--black);
+    background: var(--black);
+    color: #ffffff;
     cursor: pointer;
     font: inherit;
     font-weight: 700;
@@ -177,7 +177,7 @@ button:focus-visible {
 /* The lock button looks like a navigation item but remains a real button. */
 .nav-button {
     padding: 0.55rem 0.75rem;
-    border: 1px solid var(--black);
+    border: 1px solid #ffffff;
     border-radius: 0.35rem;
     background: var(--black);
     color: #ffffff;
@@ -195,13 +195,13 @@ button:focus-visible {
     background: var(--soft-background);
 }
 
-/* Compact white password card with the requested black brand. */
+/* Compact dark password card matching the complete black theme. */
 .login-card {
     width: min(100%, 30rem);
     padding: clamp(1.5rem, 5vw, 2.5rem);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #ffffff;
+    background: #101010;
     box-shadow: var(--shadow);
 }
 
@@ -237,14 +237,16 @@ button:focus-visible {
     border: 1px solid #999999;
     border-radius: 0.35rem 0 0 0.35rem;
     font: inherit;
+    background: var(--black);
+    color: #ffffff;
 }
 
 .password-row button {
     padding-inline: 0.9rem;
-    border: 1px solid var(--black);
+    border: 1px solid #999999;
     border-radius: 0 0.35rem 0.35rem 0;
-    background: #ffffff;
-    color: var(--black);
+    background: #181818;
+    color: #ffffff;
     cursor: pointer;
     font: inherit;
     font-weight: 700;
@@ -264,7 +266,7 @@ button:focus-visible {
 .back-link {
     display: inline-block;
     margin-top: 1.25rem;
-    color: var(--black);
+    color: #ffffff;
     font-weight: 700;
 }
 
@@ -294,7 +296,7 @@ button:focus-visible {
 .hero {
     padding-block: clamp(4.5rem, 10vw, 8rem);
     border-bottom: 1px solid var(--border);
-    background: linear-gradient(135deg, #ffffff, #eeeeee);
+    background: linear-gradient(135deg, #000000, #151515);
 }
 
 .lead {
@@ -343,7 +345,7 @@ button:focus-visible {
     padding: 1.5rem;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: #ffffff;
+    background: #101010;
     box-shadow: var(--shadow);
 }
 
@@ -351,7 +353,7 @@ button:focus-visible {
     margin-bottom: 1.25rem;
 }
 
-/* Shared button style, using black for the main brand action. */
+/* Shared outlined button remains visible against the black background. */
 .button {
     display: inline-flex;
     min-height: 2.8rem;
@@ -368,18 +370,18 @@ button:focus-visible {
 
 .button-dark,
 .button-dark:visited {
-    border-color: var(--black);
+    border-color: #ffffff;
     background: var(--black);
     color: #ffffff;
 }
 
 .button-dark:hover {
-    background: #333333;
+    background: #202020;
 }
 
 /* Text links are strong enough to remain obvious without another button. */
 .text-link {
-    color: var(--black);
+    color: #ffffff;
     font-weight: 800;
     text-underline-offset: 0.2rem;
 }

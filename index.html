@@ -1,413 +1,158 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <!-- Sets the character format -->
     <meta charset="UTF-8">
 
-    <!-- Makes the website mobile-friendly -->
+    <!-- Makes the website responsive on phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SherazOnline | Learner Login</title>
+    <!-- Description used by search engines -->
+    <meta
+        name="description"
+        content="Learner login page for BTEC Computing and T Level courses."
+    >
 
-    <style>
-        /* Removes default spacing and sets the black design */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            line-height: 1.6;
-        }
+    <!-- Browser tab title -->
+    <title>Learner Login | SherazOnline</title>
 
-        /* Keeps the website content centred */
-        .container {
-            width: 90%;
-            max-width: 1000px;
-            margin: auto;
-        }
+    <!-- Connects this page to the CSS file -->
+    <link rel="stylesheet" href="css/style.css">
 
-        /* Header */
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid #333333;
-        }
-
-        /* Header layout */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Website name */
-        .logo {
-            color: #ffffff;
-            font-size: 22px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        /* Navigation links */
-        nav a {
-            color: #ffffff;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: #cccccc;
-        }
-
-        /* Main introduction section */
-        .hero {
-            padding: 80px 0 50px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            margin: 0 0 15px;
-            font-size: 42px;
-        }
-
-        .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #cccccc;
-        }
-
-        /* General sections */
-        section {
-            padding: 60px 0;
-        }
-
-        /* Section headings */
-        .section-heading {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .section-heading h2 {
-            margin-bottom: 10px;
-            font-size: 30px;
-        }
-
-        .section-heading p {
-            margin: 0;
-            color: #bbbbbb;
-        }
-
-        /* Login card layout */
-        .login-cards {
-            display: grid;
-            gap: 20px;
-        }
-
-        /* Individual login card */
-        .login-card {
-            padding: 30px;
-            background-color: #111111;
-            border: 1px solid #333333;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .login-card h3 {
-            margin-top: 0;
-            font-size: 24px;
-        }
-
-        .login-card p {
-            color: #bbbbbb;
-        }
-
-        /* Button used inside cards */
-        .button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 22px;
-            background-color: #ffffff;
-            color: #000000;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-
-        .button:hover {
-            background-color: #dddddd;
-        }
-
-        /* Services section */
-        .services {
-            background-color: #0b0b0b;
-        }
-
-        .service-cards {
-            display: grid;
-            gap: 20px;
-        }
-
-        .service-card {
-            padding: 25px;
-            background-color: #151515;
-            border: 1px solid #333333;
-            border-radius: 8px;
-        }
-
-        .service-card h3 {
-            margin-top: 0;
-        }
-
-        .service-card p {
-            margin-bottom: 0;
-            color: #bbbbbb;
-        }
-
-        /* About section at the bottom */
-        .about {
-            text-align: center;
-        }
-
-        .about p {
-            max-width: 700px;
-            margin: auto;
-            color: #cccccc;
-        }
-
-        /* Contact section */
-        .contact {
-            background-color: #111111;
-            text-align: center;
-        }
-
-        /* Footer */
-        footer {
-            padding: 25px 0;
-            text-align: center;
-            border-top: 1px solid #333333;
-            color: #999999;
-        }
-
-        /* Three columns on larger screens */
-        @media (min-width: 700px) {
-            .login-cards,
-            .service-cards {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* Mobile navigation */
-        @media (max-width: 699px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav a {
-                display: inline-block;
-                margin: 5px;
-            }
-
-            .hero {
-                padding-top: 60px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    <!-- Loads the JavaScript after the HTML -->
+    <script src="js/main.js" defer></script>
 </head>
 
 <body>
 
     <!-- Website header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a class="logo" href="#">SherazOnline</a>
+    <header class="site-header">
+        <div class="container header-content">
 
-                <!-- All links move to sections on this page -->
-                <div>
-                    <a href="#login">Learner Login</a>
-                    <a href="#services">Services</a>
-                    <a href="#about">About Me</a>
-                    <a href="#contact">Contact</a>
-                </div>
+            <!-- Website name -->
+            <a class="logo" href="index.html">
+                SherazOnline
+            </a>
+
+            <!-- Mobile menu button -->
+            <button
+                class="menu-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="main-menu"
+            >
+                Menu
+            </button>
+
+            <!-- Public navigation -->
+            <nav id="main-menu" class="main-menu" aria-label="Main navigation">
+                <a href="#courses">Learner Login</a>
+
+                <!-- Opens the password-protected page -->
+                <a href="private.html">Private Area</a>
             </nav>
+
         </div>
     </header>
 
+    <!-- Main page content -->
     <main>
 
-        <!-- Main introduction -->
+        <!-- Introduction section -->
         <section class="hero">
             <div class="container">
-                <h1>Welcome to SherazOnline</h1>
+                <p class="small-heading">College learner access</p>
 
-                <p>
-                    Access your learning platform or find information about
-                    my teaching, tutoring and technology services.
+                <h1>Access Your Course</h1>
+
+                <p class="hero-text">
+                    Select your course below to open your learning platform.
                 </p>
             </div>
         </section>
 
         <!-- Learner login cards -->
-        <section id="login">
+        <section id="courses" class="section">
             <div class="container">
 
                 <div class="section-heading">
                     <h2>Learner Login</h2>
 
-                    <p>Select the platform you need to access.</p>
-                </div>
-
-                <div class="login-cards">
-
-                    <!-- MathsTutorHelp login card -->
-                    <div class="login-card">
-                        <h3>MathsTutorHelp</h3>
-
-                        <p>
-                            Access your Maths lessons, revision resources
-                            and progress.
-                        </p>
-
-                        <!-- Change this link if needed -->
-                        <a
-                            class="button"
-                            href="https://hai-bl.com/login"
-                        >
-                            Maths Login
-                        </a>
-                    </div>
-
-                    <!-- TableTopLearning login card -->
-                    <div class="login-card">
-                        <h3>TableTopLearning</h3>
-
-                        <p>
-                            Access your online courses, learning materials
-                            and tutor support.
-                        </p>
-
-                        <!-- Change this link if needed -->
-                        <a
-                            class="button"
-                            href="https://hai-bl.com/login"
-                        >
-                            Course Login
-                        </a>
-                    </div>
-
-                    <!-- HAiBL login card -->
-                    <div class="login-card">
-                        <h3>HAiBL</h3>
-
-                        <p>
-                            Access your learner dashboard, quizzes,
-                            resources and progress.
-                        </p>
-
-                        <!-- Main external learner platform -->
-                        <a
-                            class="button"
-                            href="https://hai-bl.com/login"
-                        >
-                            Login to HAiBL
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section id="services" class="services">
-            <div class="container">
-
-                <div class="section-heading">
-                    <h2>My Services</h2>
-                </div>
-
-                <div class="service-cards">
-
-                    <div class="service-card">
-                        <h3>Teaching and Tutoring</h3>
-
-                        <p>
-                            Maths and computing teaching for school,
-                            college and private learners.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <h3>Web Development</h3>
-
-                        <p>
-                            Simple, fast and maintainable websites
-                            for organisations and businesses.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <h3>Education Technology</h3>
-
-                        <p>
-                            Support with learning platforms,
-                            online courses and digital education.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="contact">
-            <div class="container">
-
-                <div class="section-heading">
-                    <h2>Contact Me</h2>
-
                     <p>
-                        Contact me about tuition, websites or education technology.
+                        Choose the correct course area.
                     </p>
                 </div>
 
-                <!-- Replace with your real email address -->
-                <a
-                    class="button"
-                    href="mailto:hello@sherazonline.com"
-                >
-                    Email Me
-                </a>
+                <div class="card-grid two-columns">
 
+                    <!-- BTEC Computing login card -->
+                    <article class="card">
+                        <p class="card-label">College course</p>
+
+                        <h3>BTEC Computing</h3>
+
+                        <p>
+                            Access assignments, lesson resources, guidance
+                            and course materials for BTEC Computing.
+                        </p>
+
+                        <!-- Replace this link with the real BTEC login link -->
+                        <a
+                            class="button"
+                            href="https://hai-bl.com/login"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            BTEC Login
+                        </a>
+                    </article>
+
+                    <!-- T Level login card -->
+                    <article class="card">
+                        <p class="card-label">College course</p>
+
+                        <h3>T Level Digital</h3>
+
+                        <p>
+                            Access lessons, tasks, resources and course
+                            information for T Level Digital.
+                        </p>
+
+                        <!-- Replace this link with the real T Level login link -->
+                        <a
+                            class="button"
+                            href="https://hai-bl.com/login"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            T Level Login
+                        </a>
+                    </article>
+
+                </div>
             </div>
         </section>
 
-        <!-- About Me is now at the bottom -->
-        <section id="about" class="about">
-            <div class="container">
-
-                <div class="section-heading">
-                    <h2>About Me</h2>
-                </div>
+        <!-- Simple help section -->
+        <section class="section alternate-section">
+            <div class="container centre-text">
+                <h2>Having Trouble Logging In?</h2>
 
                 <p>
-                    I am Sheraz, an experienced teacher, tutor, web developer
-                    and education technology consultant based in Manchester.
-                    I support learners, parents, schools and businesses through
-                    practical teaching and technology solutions.
+                    Check that you selected the correct course. Contact your
+                    tutor if you still cannot access your account.
                 </p>
-
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 SherazOnline.com</p>
+    <!-- Website footer -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 SherazOnline</p>
+
+            <a href="private.html">Private Area</a>
         </div>
     </footer>
 

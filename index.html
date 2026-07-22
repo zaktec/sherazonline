@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- Makes the website work properly on mobile -->
+    <!-- Makes the website mobile-friendly -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SherazOnline</title>
+    <title>SherazOnline | Learner Login</title>
 
     <style>
-        /* Whole website */
+        /* Removes default spacing and sets the black design */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
             line-height: 1.6;
         }
 
-        /* Keeps content centred */
+        /* Keeps the website content centred */
         .container {
             width: 90%;
             max-width: 1000px;
@@ -31,79 +31,165 @@
             border-bottom: 1px solid #333333;
         }
 
-        /* Navigation */
+        /* Header layout */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        /* Website name */
+        .logo {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Navigation links */
         nav a {
             color: #ffffff;
+            margin-left: 20px;
             text-decoration: none;
-            margin-left: 15px;
         }
 
-        /* Buttons */
-        .button {
-            display: inline-block;
-            padding: 12px 20px;
-            background-color: #ffffff;
-            color: #000000;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
+        nav a:hover {
+            color: #cccccc;
         }
 
-        /* Main introduction */
+        /* Main introduction section */
         .hero {
-            padding: 100px 0;
+            padding: 80px 0 50px;
             text-align: center;
         }
 
         .hero h1 {
+            margin: 0 0 15px;
             font-size: 42px;
-            margin-bottom: 10px;
         }
 
-        /* Page sections */
+        .hero p {
+            max-width: 650px;
+            margin: auto;
+            color: #cccccc;
+        }
+
+        /* General sections */
         section {
             padding: 60px 0;
         }
 
-        /* Dark grey sections */
-        .grey-section {
-            background-color: #111111;
+        /* Section headings */
+        .section-heading {
+            margin-bottom: 30px;
+            text-align: center;
         }
 
-        /* Service cards */
-        .services {
+        .section-heading h2 {
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: #bbbbbb;
+        }
+
+        /* Login card layout */
+        .login-cards {
             display: grid;
             gap: 20px;
         }
 
-        .card {
+        /* Individual login card */
+        .login-card {
+            padding: 30px;
+            background-color: #111111;
+            border: 1px solid #333333;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .login-card h3 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .login-card p {
+            color: #bbbbbb;
+        }
+
+        /* Button used inside cards */
+        .button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 22px;
+            background-color: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #dddddd;
+        }
+
+        /* Services section */
+        .services {
+            background-color: #0b0b0b;
+        }
+
+        .service-cards {
+            display: grid;
+            gap: 20px;
+        }
+
+        .service-card {
             padding: 25px;
-            background-color: #171717;
+            background-color: #151515;
             border: 1px solid #333333;
             border-radius: 8px;
         }
 
-        /* Student login section */
-        .student-login {
+        .service-card h3 {
+            margin-top: 0;
+        }
+
+        .service-card p {
+            margin-bottom: 0;
+            color: #bbbbbb;
+        }
+
+        /* About section at the bottom */
+        .about {
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: auto;
+            color: #cccccc;
+        }
+
+        /* Contact section */
+        .contact {
+            background-color: #111111;
             text-align: center;
         }
 
         /* Footer */
         footer {
-            padding: 25px;
+            padding: 25px 0;
             text-align: center;
             border-top: 1px solid #333333;
+            color: #999999;
         }
 
-        /* Desktop card layout */
+        /* Three columns on larger screens */
         @media (min-width: 700px) {
-            .services {
+            .login-cards,
+            .service-cards {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
@@ -120,6 +206,10 @@
                 margin: 5px;
             }
 
+            .hero {
+                padding-top: 60px;
+            }
+
             .hero h1 {
                 font-size: 32px;
             }
@@ -129,22 +219,18 @@
 
 <body>
 
-    <!-- Header -->
+    <!-- Website header -->
     <header>
         <div class="container">
             <nav>
-                <strong>SherazOnline</strong>
+                <a class="logo" href="#">SherazOnline</a>
 
+                <!-- All links move to sections on this page -->
                 <div>
-                    <a href="#about">About</a>
+                    <a href="#login">Learner Login</a>
                     <a href="#services">Services</a>
-                    <a href="#projects">Projects</a>
+                    <a href="#about">About Me</a>
                     <a href="#contact">Contact</a>
-
-                    <!-- External learner login -->
-                    <a class="button" href="https://hai-bl.com/login">
-                        Student Login
-                    </a>
                 </div>
             </nav>
         </div>
@@ -152,104 +238,167 @@
 
     <main>
 
-        <!-- Introduction -->
+        <!-- Main introduction -->
         <section class="hero">
             <div class="container">
-                <h1>Teacher, Developer and Consultant</h1>
+                <h1>Welcome to SherazOnline</h1>
 
                 <p>
-                    Teaching, tutoring, web development and education technology.
+                    Access your learning platform or find information about
+                    my teaching, tutoring and technology services.
                 </p>
-
-                <a class="button" href="#contact">Contact Me</a>
             </div>
         </section>
 
-        <!-- About -->
-        <section id="about" class="grey-section">
+        <!-- Learner login cards -->
+        <section id="login">
             <div class="container">
-                <h2>About Me</h2>
 
-                <p>
-                    I am Sheraz, a teacher, tutor, web developer and education
-                    technology consultant based in Manchester.
-                </p>
+                <div class="section-heading">
+                    <h2>Learner Login</h2>
+
+                    <p>Select the platform you need to access.</p>
+                </div>
+
+                <div class="login-cards">
+
+                    <!-- MathsTutorHelp login card -->
+                    <div class="login-card">
+                        <h3>MathsTutorHelp</h3>
+
+                        <p>
+                            Access your Maths lessons, revision resources
+                            and progress.
+                        </p>
+
+                        <!-- Change this link if needed -->
+                        <a
+                            class="button"
+                            href="https://hai-bl.com/login"
+                        >
+                            Maths Login
+                        </a>
+                    </div>
+
+                    <!-- TableTopLearning login card -->
+                    <div class="login-card">
+                        <h3>TableTopLearning</h3>
+
+                        <p>
+                            Access your online courses, learning materials
+                            and tutor support.
+                        </p>
+
+                        <!-- Change this link if needed -->
+                        <a
+                            class="button"
+                            href="https://hai-bl.com/login"
+                        >
+                            Course Login
+                        </a>
+                    </div>
+
+                    <!-- HAiBL login card -->
+                    <div class="login-card">
+                        <h3>HAiBL</h3>
+
+                        <p>
+                            Access your learner dashboard, quizzes,
+                            resources and progress.
+                        </p>
+
+                        <!-- Main external learner platform -->
+                        <a
+                            class="button"
+                            href="https://hai-bl.com/login"
+                        >
+                            Login to HAiBL
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </section>
 
         <!-- Services -->
-        <section id="services">
+        <section id="services" class="services">
             <div class="container">
-                <h2>My Services</h2>
 
-                <div class="services">
-                    <div class="card">
-                        <h3>Teaching</h3>
-                        <p>Maths and computing teaching and tutoring.</p>
+                <div class="section-heading">
+                    <h2>My Services</h2>
+                </div>
+
+                <div class="service-cards">
+
+                    <div class="service-card">
+                        <h3>Teaching and Tutoring</h3>
+
+                        <p>
+                            Maths and computing teaching for school,
+                            college and private learners.
+                        </p>
                     </div>
 
-                    <div class="card">
+                    <div class="service-card">
                         <h3>Web Development</h3>
-                        <p>Simple, fast and professional websites.</p>
+
+                        <p>
+                            Simple, fast and maintainable websites
+                            for organisations and businesses.
+                        </p>
                     </div>
 
-                    <div class="card">
+                    <div class="service-card">
                         <h3>Education Technology</h3>
-                        <p>Learning platforms and digital education support.</p>
+
+                        <p>
+                            Support with learning platforms,
+                            online courses and digital education.
+                        </p>
                     </div>
+
                 </div>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects" class="grey-section">
-            <div class="container">
-                <h2>My Projects</h2>
-
-                <div class="services">
-                    <div class="card">
-                        <h3>MathsTutorHelp</h3>
-                        <p>Maths tuition and revision support.</p>
-                    </div>
-
-                    <div class="card">
-                        <h3>HAiBL</h3>
-                        <p>Online learning and student management platform.</p>
-                    </div>
-
-                    <div class="card">
-                        <h3>TableTopLearning</h3>
-                        <p>Structured online courses with tutor support.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Student login -->
-        <section class="student-login">
-            <div class="container">
-                <h2>Student Login</h2>
-
-                <p>Access your courses, quizzes and learning resources.</p>
-
-                <a class="button" href="https://hai-bl.com/login">
-                    Login to HAiBL
-                </a>
             </div>
         </section>
 
         <!-- Contact -->
-        <section id="contact" class="grey-section">
+        <section id="contact" class="contact">
             <div class="container">
-                <h2>Contact Me</h2>
 
-                <p>
-                    Contact me about tuition, websites or education technology.
-                </p>
+                <div class="section-heading">
+                    <h2>Contact Me</h2>
 
-                <a class="button" href="mailto:hello@sherazonline.com">
+                    <p>
+                        Contact me about tuition, websites or education technology.
+                    </p>
+                </div>
+
+                <!-- Replace with your real email address -->
+                <a
+                    class="button"
+                    href="mailto:hello@sherazonline.com"
+                >
                     Email Me
                 </a>
+
+            </div>
+        </section>
+
+        <!-- About Me is now at the bottom -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="section-heading">
+                    <h2>About Me</h2>
+                </div>
+
+                <p>
+                    I am Sheraz, an experienced teacher, tutor, web developer
+                    and education technology consultant based in Manchester.
+                    I support learners, parents, schools and businesses through
+                    practical teaching and technology solutions.
+                </p>
+
             </div>
         </section>
 
@@ -257,7 +406,9 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 SherazOnline.com</p>
+        <div class="container">
+            <p>&copy; 2026 SherazOnline.com</p>
+        </div>
     </footer>
 
 </body>

@@ -1,1 +1,436 @@
+/* ==================================================
+   1. WEBSITE VARIABLES
+   These values control the main website appearance.
+   ================================================== */
 
+:root {
+    /* Main colours */
+    --background: #000000;
+    --surface: #111111;
+    --surface-light: #191919;
+    --text: #ffffff;
+    --text-muted: #bdbdbd;
+    --border: #333333;
+    --button-background: #ffffff;
+    --button-text: #000000;
+    --error: #ff8080;
+
+    /* Page sizing */
+    --container-width: 1050px;
+
+    /* Reusable styling */
+    --radius: 8px;
+    --spacing-section: 70px;
+}
+
+
+/* ==================================================
+   2. BASIC RESET
+   Removes inconsistent browser spacing.
+   ================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    /* Smoothly scrolls to sections */
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* ==================================================
+   3. SHARED PAGE LAYOUT
+   ================================================== */
+
+/* Centres content and limits its width */
+.container {
+    width: min(90%, var(--container-width));
+    margin-inline: auto;
+}
+
+/* Used for narrower text sections */
+.narrow-container {
+    max-width: 750px;
+}
+
+/* Standard spacing for sections */
+.section {
+    padding-block: var(--spacing-section);
+}
+
+/* Gives selected sections a slightly lighter background */
+.alternate-section {
+    background-color: var(--surface);
+}
+
+/* Centres text */
+.centre-text {
+    text-align: center;
+}
+
+
+/* ==================================================
+   4. HEADER AND NAVIGATION
+   ================================================== */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Website name */
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Desktop navigation */
+.main-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-menu a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.main-menu a:hover {
+    color: var(--text-muted);
+}
+
+/* Mobile menu button hidden on desktop */
+.menu-button {
+    display: none;
+    padding: 9px 14px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+/* Button inside the private navigation */
+.nav-button {
+    padding: 9px 14px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: 0;
+    border-radius: var(--radius);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   5. HERO SECTIONS
+   ================================================== */
+
+.hero {
+    padding: 100px 0 70px;
+    text-align: center;
+}
+
+.hero h1 {
+    max-width: 850px;
+    margin: 0 auto 15px;
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.1;
+}
+
+.hero-text {
+    max-width: 650px;
+    margin: auto;
+    color: var(--text-muted);
+    font-size: 18px;
+}
+
+/* Slightly smaller hero on private page */
+.private-hero {
+    padding-bottom: 50px;
+}
+
+/* Small text above major headings */
+.small-heading,
+.card-label {
+    margin-top: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* ==================================================
+   6. HEADINGS
+   ================================================== */
+
+.section-heading {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 5vw, 40px);
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+h2,
+h3 {
+    line-height: 1.2;
+}
+
+
+/* ==================================================
+   7. CARDS
+   ================================================== */
+
+.card-grid {
+    display: grid;
+    gap: 20px;
+}
+
+/* Used for the two public course cards */
+.two-columns {
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.card {
+    padding: 28px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.alternate-section .card {
+    background-color: var(--surface-light);
+}
+
+.card h3 {
+    margin: 0 0 12px;
+    font-size: 23px;
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+
+/* ==================================================
+   8. BUTTONS AND LINKS
+   ================================================== */
+
+.button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 20px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: 0;
+    border-radius: var(--radius);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover,
+.nav-button:hover {
+    background-color: #dddddd;
+}
+
+/* Makes a button fill the password box width */
+.full-button {
+    width: 100%;
+}
+
+.text-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--text-muted);
+}
+
+
+/* ==================================================
+   9. PASSWORD SCREEN
+   ================================================== */
+
+/* Covers the full browser window */
+.password-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+/* Password form card */
+.password-box {
+    width: 100%;
+    max-width: 390px;
+    padding: 35px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.password-box h1 {
+    margin: 0 0 10px;
+}
+
+.password-box p {
+    color: var(--text-muted);
+}
+
+/* Password label */
+.password-box label {
+    display: block;
+    margin-top: 20px;
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Password field */
+.password-box input {
+    width: 100%;
+    margin: 8px 0 5px;
+    padding: 13px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 0;
+    border-radius: var(--radius);
+}
+
+/* Space reserved for an error message */
+.error-message {
+    min-height: 25px;
+    color: var(--error) !important;
+}
+
+/* Private content is hidden before login */
+.private-content {
+    display: none;
+}
+
+
+/* ==================================================
+   10. FOOTER
+   ================================================== */
+
+.site-footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-content p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.footer-content a {
+    color: var(--text-muted);
+}
+
+
+/* ==================================================
+   11. TABLET AND DESKTOP LAYOUT
+   ================================================== */
+
+@media (min-width: 700px) {
+    /* Three cards across on larger screens */
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Keeps public learner cards as two columns */
+    .two-columns {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ==================================================
+   12. MOBILE LAYOUT
+   ================================================== */
+
+@media (max-width: 699px) {
+    /* Displays the mobile menu button */
+    .menu-button {
+        display: block;
+    }
+
+    /* Hides navigation until JavaScript opens it */
+    .main-menu {
+        display: none;
+        position: absolute;
+        top: 75px;
+        right: 5%;
+        left: 5%;
+        padding: 20px;
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+    }
+
+    /* JavaScript adds this class */
+    .main-menu.is-open {
+        display: grid;
+        gap: 15px;
+    }
+
+    .hero {
+        padding-top: 70px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}

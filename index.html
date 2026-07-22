@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <!-- Basic page settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Search engine information -->
+    <meta
+        name="description"
+        content="Sheraz is a teacher, tutor, web developer and education technology consultant based in Manchester."
+    >
+
+    <title>Sheraz | Teacher, Developer and Consultant</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JavaScript is loaded after the HTML -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Skip link helps keyboard and screen-reader users -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Website header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <!-- Website name and homepage link -->
+            <a class="site-logo" href="index.html" aria-label="Sheraz homepage">
+                Sheraz<span>Online</span>
+            </a>
+
+            <!-- Mobile navigation button -->
+            <button
+                class="menu-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="main-navigation"
+            >
+                <span class="visually-hidden">Open navigation menu</span>
+                <span aria-hidden="true">☰</span>
+            </button>
+
+            <!-- Main navigation -->
+            <nav
+                id="main-navigation"
+                class="main-navigation"
+                aria-label="Main navigation"
+            >
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+
+                    <!-- Authentication stays on the separate HAiBL platform -->
+                    <li>
+                        <a
+                            class="login-link"
+                            href="https://hai-bl.com/login"
+                            rel="noopener"
+                        >
+                            Student Login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main page content -->
+    <main id="main-content">
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="container hero-layout">
+                <div class="hero-content">
+                    <p class="eyebrow">Teaching • Technology • Development</p>
+
+                    <h1>Helping learners and organisations use education and technology effectively.</h1>
+
+                    <p class="hero-introduction">
+                        I am Sheraz, an experienced teacher, tutor, web developer
+                        and education technology consultant based in Manchester.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#services">
+                            View my services
+                        </a>
+
+                        <a class="button button-secondary" href="#contact">
+                            Contact me
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Summary card -->
+                <aside class="profile-card" aria-label="Professional summary">
+                    <h2>What I do</h2>
+
+                    <ul class="check-list">
+                        <li>Maths and computing education</li>
+                        <li>Private and group tutoring</li>
+                        <li>Web development</li>
+                        <li>Education technology consultancy</li>
+                        <li>Learning platform development</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <!-- About section -->
+        <section id="about" class="section">
+            <div class="container narrow-container">
+                <p class="section-label">About</p>
+
+                <h2>Education experience supported by practical technology skills.</h2>
+
+                <p>
+                    I work across teaching, tutoring, web development and
+                    education technology. My focus is on creating clear,
+                    practical solutions that help learners make steady progress
+                    and help organisations use technology more effectively.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services section -->
+        <section id="services" class="section section-muted">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">Services</p>
+                        <h2>How I can help</h2>
+                    </div>
+
+                    <p>
+                        Support for learners, parents, schools, community
+                        organisations and small businesses.
+                    </p>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Teaching service -->
+                    <article class="service-card">
+                        <div class="card-icon" aria-hidden="true">01</div>
+
+                        <h3>Teaching and Tutoring</h3>
+
+                        <p>
+                            Structured Maths and computing support for learners
+                            at different levels, including GCSE preparation.
+                        </p>
+
+                        <a href="#contact">Discuss tuition</a>
+                    </article>
+
+                    <!-- Web development service -->
+                    <article class="service-card">
+                        <div class="card-icon" aria-hidden="true">02</div>
+
+                        <h3>Web Development</h3>
+
+                        <p>
+                            Fast, accessible and maintainable websites for
+                            education providers, professionals and businesses.
+                        </p>
+
+                        <a href="#contact">Discuss a website</a>
+                    </article>
+
+                    <!-- Education technology service -->
+                    <article class="service-card">
+                        <div class="card-icon" aria-hidden="true">03</div>
+
+                        <h3>Education Technology</h3>
+
+                        <p>
+                            Advice and development support for online learning,
+                            course delivery and education platforms.
+                        </p>
+
+                        <a href="#contact">Discuss a project</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">Projects</p>
+                        <h2>Brands and platforms</h2>
+                    </div>
+
+                    <p>
+                        My work connects education, tutoring, course delivery
+                        and technology.
+                    </p>
+                </div>
+
+                <div class="project-grid">
+                    <!-- MathsTutorHelp project -->
+                    <article class="project-card">
+                        <p class="project-type">Tutoring</p>
+                        <h3>MathsTutorHelp</h3>
+
+                        <p>
+                            Maths tuition, revision programmes and structured
+                            support for school learners.
+                        </p>
+
+                        <a
+                            href="https://mathstutorhelp.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Visit MathsTutorHelp
+                        </a>
+                    </article>
+
+                    <!-- HAiBL project -->
+                    <article class="project-card">
+                        <p class="project-type">Learning platform</p>
+                        <h3>HAiBL</h3>
+
+                        <p>
+                            A learning platform for courses, quizzes, resources,
+                            progress tracking and learner accounts.
+                        </p>
+
+                        <a
+                            href="https://hai-bl.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Visit HAiBL
+                        </a>
+                    </article>
+
+                    <!-- TableTopLearning project -->
+                    <article class="project-card">
+                        <p class="project-type">Online courses</p>
+                        <h3>TableTopLearning</h3>
+
+                        <p>
+                            Structured online courses combined with practical
+                            guidance and tutor support.
+                        </p>
+
+                        <a href="#contact">Learn more</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Student login callout -->
+        <section class="login-callout">
+            <div class="container callout-inner">
+                <div>
+                    <p class="section-label">Existing learners</p>
+                    <h2>Access your course and learning resources.</h2>
+
+                    <p>
+                        Learner accounts, quizzes and progress are managed
+                        securely through the separate HAiBL platform.
+                    </p>
+                </div>
+
+                <a
+                    class="button button-light"
+                    href="https://hai-bl.com/login"
+                    rel="noopener"
+                >
+                    Go to Student Login
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact" class="section">
+            <div class="container contact-layout">
+                <div>
+                    <p class="section-label">Contact</p>
+                    <h2>Start a conversation</h2>
+
+                    <p>
+                        Contact me about tuition, website development,
+                        education technology or professional collaboration.
+                    </p>
+                </div>
+
+                <!-- Replace this email address with the final contact address -->
+                <a
+                    class="button button-primary"
+                    href="mailto:hello@sherazonline.com"
+                >
+                    Email Sheraz
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Website footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>
+                &copy; <span id="current-year"></span> SherazOnline.com
+            </p>
+
+            <nav aria-label="Footer navigation">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
